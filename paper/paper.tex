@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+%\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out
+                                                          % if you need a4paper
+\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4
+                                                          % paper
+\usepackage[utf8]{inputenc}  % Ng Edit for accents in spanish
+\usepackage[spanish]{babel}  % Ng Edit for accents in spanish
+\usepackage{hyperref}        % Ng Edit for adding urls
+\usepackage{graphicx}        % Ng Edit for adding graphics
+\IEEEoverridecommandlockouts                              % This command is only
+                                                          % needed if you want to
+                                                          % use the \thanks command
+\overrideIEEEmargins
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+\def\equationautorefname~#1\null{(#1)\null}%to use parenthesis in eqs.
+
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+
+\title{\LARGE \bf
+    Utilización de Algoritmo de Agrupación de Múltiples Vistas
+    para la Detección de Rostros
+}
+\author{Pedro Luis González Roa}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{empty}
+    \pagestyle{empty}
+
+    \begin{abstract}
+        En los últimos años se ha demostrado la complejidad en la realización de
+        algoritmos de detección y reconocimiento de rostros, ya que estos comparten
+        un alto grado de similitud estructural. De esta manera, se requieren de la
+        utilización \textit{redes neuronales convolucionales} (CNN por sus siglas
+        en inglés) para la extración de características de la imagen.
+        Las cuales requieren de una base de datos de gran tamaño para el
+        entrenamiento exitoso de estas. Por lo que se utilizan se utilizan
+        \textit{CNN}'s previamente entrenadas para la extracción de las características
+        las cuales definirán el grupo ó cara a la que pertenecen. Se propone la
+        utilización de múltiples \textit{redes neuronales convolucionales} en conjunto,
+        combinando las características que extraen cada una de ellas para la parte
+        interior y la exterior de la cara.
+    \end{abstract}
+
+    \section{Antecedentes}
+
+    \subsection{Agrupamiento de imágenes}
+    El reconocimiento facial se encuentra directamente relacionado con uno de los
+    problemas que han recibido mucha atención en las últimas tres décadas. El problema
+    de agrupamiento de imágenes, también conocido como \textit{IC} por sus siglas
+    en inglés, se centra en la búsqueda y comparación de características similares
+    entre imágenes. En otras palabras, \textit{IC} consiste subconjuntos de objetos de
+    una misma naturaleza y separarlos de los objetos con características diferentes.
+    \cite{CombiningCNN}
+
+    \subsection{Combinación de CNN previamente entrenados}
+    En previas investigaciones diferentes modelos de \textit{deep clustering algorithm}
+    han demostrado un buen desempeño para pequeñas imágenes. Por otro lado, para
+    obtener resultados exitosos en la agrupación de imágenes de mayor complejidad
+    (cómo imágenes de objetos con estructuras complejas) es necesario la utilización
+    de \textit{CNN}s ya entrenadas en un paso previo para la extracción de
+    características específicas. Existen una variedad de estos modelos, los cuales
+    tienen un mismo objetivo pero aportan una perspectiva diferente. Para casos
+    específicos un modelo puede tener mejor desempeño en la obtención de
+    características definitivas, pero en otros existe la posibilidad de lo
+    contrario. \cite{CombiningCNN}
+
+    \newline
+    Al igual que en diferentes temas en la era de \textit{Big Data}, existen
+    diferentes perspectivas del mismo objeto que se pueden utilizar para complementarse
+    mutuamente. Por lo cual, el algoritmo de
+    \textit{Agrupación de vistas múltiples (Multi-view clustering - MVC)} ha ganado
+    popularidad por su éxito en modelos que obtienen información del mismo objeto
+    desde diferentes fuentes. \cite{Yang2018} Guérin en su artículo
+    \textit{"Combining pretrained CNN feature extractors to enhance clustering of complex natural images"}
+    utiliza diferentes modelos \textit{CNN} cómo las múltiples perspectivas, para obtener
+    un mejor rendimiento en la agrupación de imágenes. Utilizando dicha arquitectura
+    se demostró que se reduce el riesgo de elegir una red \textit{CNN} que no
+    obtenga las mejores características para la discriminación de las imágenes.
+    \cite{CombiningCNN}
+
+
+    \subsection{Modelo IE-CNN}
+    Previamente se mencionó que el reconocimiento facial se encuentra relacionado
+    a \textit{IC}. Esto es porque también es importante la detección de los rasgos
+    que diferencían a una persona de otra; donde por la estructura general de nuestros
+    rostros no es una tarea sencilla. Por lo que investigaciones y propuestas exitosas
+    en este ámbito han utilizado una gran cantidad de imágenes de los mismos rostros.
+    An-Ping Song en su artículo \textit{"Similar Face Recognition Using the IE-CNN Model"}
+    remarca que en estas investigaciones se ha enfocado a la cara como un solo objeto.
+    Cuando nuestras cabezas se descomponen en dos áreas:
+    \begin{itemize}
+        \item La interna: que se compone por los ojos, nariz y boca.
+        \item La externa: que se compone por la cabeza, la barbilla y las orejas.
+    \end{itemize}
+    El modelo \textit{IE-CNN} de Song se enfoca en separar dichas áreas y utilizarlas
+    cómo diferentes partes de una misma entrada de datos antes de las estructuras
+    convolucionales, obteniendo mejores resultados. \cite{IECNN}
+
+    \section{Planteamiento del Problema}
+    La utilización de redes neuronales profundas ha obtenido un buen resultado
+    para la detección de rostros. Aunque un atributo importante para el éxito de
+    estas ha sido el enorme tamaño de las bases de datos utilizadas para el
+    entrenamiento. Esto es por la similitudes estructurales que se tienen entre
+    los diferentes rostros humanos, exigiendo una gran cantidad de muestras para
+    que un modelo \textit{CNN} convencional sea capaz de aprender
+    sobre las características necesarias para discernir entre ellas.
+
+    \newline
+    La obtención de dicha cantidad de datos requiere de un personal extenso y acceso
+    a mucha información, la cual siempre es pública. An-Ping Song en su
+    investigación describe la gran diferencia entre los repositorios públicos y
+    los repositorios privados de rostros humanos para entrenamiento en la
+    tabla \textit{Table 1}. \cite{IECNN} Al no ser tan viable la recolección de
+    estos datos, en ocasiones es necesario buscar alternativas para eficientizar
+    los modelos alrededor de la cantidad de información obtenida.
+    
+    \begin{table}[ht]
+        \caption{Tamaño de diferentes repositorios de imágenes de rostros}
+        \label{t1}
+        \begin{center}
+            \begin{tabular}{|c||c||c|}
+                \hline
+                \textbf{Repositorio} & \textbf{Identidades} & \textbf{Imágenes} \\
+                \hline
+                LFW & 5,749 & 13,233 \\
+                \hline
+                WDRef & 2,995 & 13,233 \\
+                \hline
+                CelebFaces & 10,177 & 202,599 \\
+                \hline
+                CASIA-WebFace & 10,575 & 494,414 \\
+                \hline
+                Facebook & 4,030 & 4.4M \\
+                \hline
+                Google (Privado) & 8M & 200M \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \section{Contribuciones Esperadas}
+    Se propone un modelo basado en los resultados de las investigaciones previamente
+    mencionadas. Esta arquitectura buscará utilizar diferentes perspectivas de
+    modelos \textit{CNN} previamente entrenados sobre las dos diferentes áreas
+    propuestas por Song, utilizando agrupamiento de diferentes vistas. Buscando
+    aprovechar al máximo la cantidad de información en los dataset públicos, y
+    tener el mismo desempeño, o incluso una mejora, a comparación de otros modelos.
+
+    \newline
+    El desempeño del modelo se mide de acuerdo al porcentage de rostros correctamente
+    agrupados. Es decir que los grupos de las imágenes correspondan al mismo rostro.
+
+    \bibliographystyle{plain} % We choose the "plain" reference style
+    \bibliography{refs} % Entries are in the refs.bib file
+\end{document}

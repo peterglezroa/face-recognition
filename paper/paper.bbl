@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{CombiningCNN}
+Joris Guérin, Stéphane Thiery, Eric Nyiri, Olivier Gibaru, and Byron Boots.
+\newblock Combining pretrained cnn feature extractors to enhance clustering of
+  complex natural images.
+\newblock {\em Neurocomputing}, 423:551--571, 1 2021.
+
+\bibitem{IECNN}
+An~Ping Song, Qian Hu, Xue~Hai Ding, Xin~Yi Di, and Zi~Heng Song.
+\newblock Similar face recognition using the ie-cnn model.
+\newblock {\em IEEE Access}, 8:45244--45253, 2020.
+
+\bibitem{Yang2018}
+Yan Yang and Hao Wang.
+\newblock Multi-view clustering: A survey.
+\newblock {\em Big Data Mining and Analytics}, 1:83--107, 6 2018.
+
+\end{thebibliography}
