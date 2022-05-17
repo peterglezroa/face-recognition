@@ -1,0 +1,5 @@
+CelebA: http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html
+FERET: https://www.nist.gov/itl/products-and-services/color-feret-database
+Flickr: https://github.com/NVlabs/ffhq-dataset
+Tufts: https://www.kaggle.com/datasets/kpvisionlab/tufts-face-database
+Youtube Faces: https://www.kaggle.com/datasets/selfishgene/youtube-faces-with-facial-keypoints
