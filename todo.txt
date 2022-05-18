@@ -1,0 +1,34 @@
+Datasets
+1.- Scripts to obtain n amount of images of each specific dataset
+2.- Display a list of images from csv
+
+Face detection
+3.- Script to detect and focus on a face.
+4.- [optional] Fragment the face in 3 different sections that will enter as distinct
+
+Face recognition models
+4.- Obtain atleast 5 models with pretrained values
+5.- Score on atleast 2 datasets
+6.- Train if it is needed and then Score to compare
+7.- [optional] Obtain face mask model with pretrained values
+
+MVC
+7.- Remove softmax from previous models
+8.- Make MVC - CC model 1 with kmeans
+9.- Make MVC - CC model 2 with
+10.- Investigate about JULE and implement it
+
+Results
+11.- Compare results with each database, denoting databases features like pixeled or in the wild
+12.- Compare time taken per model
+
+Writing
+13.- First chapter and Second chapter: Improve proposal
+14.- Third chapter: Obtaining datasets
+15.- Fourth chapter: Face detection
+16.- Fifth chapter: Finding ideal number of models
+17.- Sixth chapter: First results per model
+18.- Seventh chapter: MVC model
+19.- Eight chapter: Results
+20.- Nineth chapter: Conclutions
+21.- Tenth chapter: Future work
