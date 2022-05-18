@@ -5,6 +5,7 @@ datasets.py
 File used for obtaining n amount of photos from the datasets obtained for this
 project.
 """
+import os
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -39,17 +40,20 @@ def preprocess_df(df: pd.DataFrame) -> np.array:
     return df.to_numpy()
 
 
-def obtain_celeba_images(n: int) -> np.array:
+def obtain_celeba_images(n: int) -> pd.DataFrame:
     """
     It is expected for the structure to be as following:
         <CELEBA_PATH>/
         ├─ identity_CelebA.txt
         ├─ img_align_celeba/
+            ├─<images>
     * 'identity_CelebA.txt' is the downloaded identity text annotations without
     change from the dataset.
     * 'img_align_celeba' is the folder with all the downloaded images.
 
-    @returns numpy array of n size with preprocessed images and its labels
+    @returns a pandas DataFrame of a n size sample with the following cols:
+        - path: path to the location of the image
+        - label: name of the person within the image
     """
     df_labels = pd.read_csv(
         f"{CELEBA_PATH}/identity_CelebA.txt",
@@ -57,12 +61,31 @@ def obtain_celeba_images(n: int) -> np.array:
         sep=' '
     )
     # Select random images
-    sample = df_labels.sample(n)
-    # Preprocess
-    return preprocess_df(sample)
+    return df_labels.sample(n)
+
+def obtain_lfw_images(n: int) -> np.array:
+    """
+    It is expected for the structure to be as following:
+    <LFW_PATH>/
+    ├─<Person name/label>
+        ├─<images>
+
+    @returns a pandas DataFrame of a n size sample with the following cols:
+        - path: path to the location of the image
+        - label: name of the person within the image
+    """
+    paths = []
+    labels = []
+    for root, dirs, files, in os.walk(LFW_PATH):
+        for file in files:
+            if file.endswith("png") or file.endswith("jpg"):
+                paths.append(os.path.join(root, file))
+                labels.append(os.path.basename(root).replace('_', ' '))
+    df = pd.DataFrame(data={"path": paths, "label": labels})
+    return df.sample(n)
 
 def main():
-    obtain_celeba_images(50)
+    obtain_lfw_images(10)
 
 if __name__ == "__main__":
     main()
