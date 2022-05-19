@@ -16,7 +16,6 @@ from PIL import Image
 CELEBA_PATH="/home/peterglezroa/Documents/datasets/Face/CelebA"
 FLICKR_PATH="/home/peterglezroa/Documents/datasets/Face/Flickr"
 LFW_PATH="/home/peterglezroa/Documents/datasets/Face/Labeled Face in The Wild"
-YOUTUBE_PATH="/home/peterglezroa/Documents/datasets/Face/Youtube"
 YALE_PATH="/home/peterglezroa/Documents/datasets/Face/yalefaces"
 
 def preprocess_df(df: pd.DataFrame) -> np.array:
@@ -60,10 +59,9 @@ def obtain_celeba_images(n: int) -> pd.DataFrame:
         names = ["path", "label"],
         sep=' '
     )
-    # Select random images
     return df_labels.sample(n)
 
-def obtain_lfw_images(n: int) -> np.array:
+def obtain_lfw_images(n: int) -> pd.DataFrame:
     """
     It is expected for the structure to be as following:
     <LFW_PATH>/
@@ -84,8 +82,28 @@ def obtain_lfw_images(n: int) -> np.array:
     df = pd.DataFrame(data={"path": paths, "label": labels})
     return df.sample(n)
 
+def obtain_yale_images(n: int) -> pd.DataFrame:
+    """
+    It is expected for the structure to be as following:
+    <YALE_PATH>/
+    ├─<images>
+
+    @returns a pandas DataFrame of a n size sample with the following cols:
+        - path: path to the location of the image
+        - label: name of the person within the image
+    """
+    paths = []
+    labels = []
+    for root, dirs, files in os.walk(YALE_PATH):
+        for file in files:
+            # Gif files
+            paths.append(os.path.join(root, file))
+            labels.append(os.path.basename(file).split('.')[0])
+    df = pd.DataFrame(data={"path": paths, "label": labels})
+    return df.sample(n)
+
 def main():
-    obtain_lfw_images(10)
+    obtain_yale_images(10)
 
 if __name__ == "__main__":
     main()
