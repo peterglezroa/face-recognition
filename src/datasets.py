@@ -8,17 +8,13 @@ project.
 import os
 import numpy as np
 import pandas as pd
-from PIL import Image
-#import tensorflow as tf
-#from tensorflow import keras
-
 
 CELEBA_PATH="/home/peterglezroa/Documents/datasets/Face/CelebA"
 FLICKR_PATH="/home/peterglezroa/Documents/datasets/Face/Flickr"
 LFW_PATH="/home/peterglezroa/Documents/datasets/Face/Labeled Face in The Wild"
 YALE_PATH="/home/peterglezroa/Documents/datasets/Face/yalefaces"
 
-def preprocess_df(df: pd.DataFrame) -> np.array:
+def preprocess_dataframe(df:pd.DataFrame, size:list=[224,224]) -> np.array:
     """
     Expects a dataframe:
         - the first column 'path': the path to the image file
@@ -34,12 +30,13 @@ def preprocess_df(df: pd.DataFrame) -> np.array:
         ).convert("L"), "uint8"),
         axis = 1
     )
+
+    # Only value and label is needed
     df = df.drop(columns=["path"])
     df = df.loc[:, ["value", "label"]]
     return df.to_numpy()
 
-
-def obtain_celeba_images(n: int) -> pd.DataFrame:
+def obtain_celeba_images(n:int) -> pd.DataFrame:
     """
     It is expected for the structure to be as following:
         <CELEBA_PATH>/
@@ -54,14 +51,17 @@ def obtain_celeba_images(n: int) -> pd.DataFrame:
         - path: path to the location of the image
         - label: name of the person within the image
     """
-    df_labels = pd.read_csv(
-        f"{CELEBA_PATH}/identity_CelebA.txt",
+    df = pd.read_csv(
+        os.path.join(CELEBA_PATH, "identity_CelebA.txt"),
         names = ["path", "label"],
         sep=' '
     )
-    return df_labels.sample(n)
+    df_sample = df.sample(n)
+    root = os.path.join(CELEBA_PATH, "img_align_celeba/")
+    df_sample["path"] = root + df_sample["path"]
+    return df_sample
 
-def obtain_lfw_images(n: int) -> pd.DataFrame:
+def obtain_lfw_images(n:int) -> pd.DataFrame:
     """
     It is expected for the structure to be as following:
     <LFW_PATH>/
@@ -82,7 +82,7 @@ def obtain_lfw_images(n: int) -> pd.DataFrame:
     df = pd.DataFrame(data={"path": paths, "label": labels})
     return df.sample(n)
 
-def obtain_yale_images(n: int) -> pd.DataFrame:
+def obtain_yale_images(n:int) -> pd.DataFrame:
     """
     It is expected for the structure to be as following:
     <YALE_PATH>/
@@ -96,14 +96,14 @@ def obtain_yale_images(n: int) -> pd.DataFrame:
     labels = []
     for root, dirs, files in os.walk(YALE_PATH):
         for file in files:
-            # Gif files
-            paths.append(os.path.join(root, file))
-            labels.append(os.path.basename(file).split('.')[0])
+            # Add extension to files that do not have it
+            label, ext = os.path.splitext(file)
+            if ext != ".gif":
+                os.rename(os.path.join(root, file),
+                    os.path.join(root, label + ext + ".gif"))
+                paths.append(os.path.join(root, file + ".gif"))
+            else:
+                paths.append(os.path.join(root, file))
+            labels.append(label)
     df = pd.DataFrame(data={"path": paths, "label": labels})
     return df.sample(n)
-
-def main():
-    obtain_yale_images(10)
-
-if __name__ == "__main__":
-    main()

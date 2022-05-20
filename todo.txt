@@ -1,9 +1,10 @@
 Datasets
-1.- Scripts to obtain n amount of images of each specific dataset
+1.- (done) Scripts to obtain n amount of images of each specific dataset
 2.- Display a list of images from csv
 
 Face detection
-3.- Script to detect and focus on a face.
+(Compare mtcnn vs dlib)
+3.- (done) Script to detect and focus on a face.
 4.- [optional] Fragment the face in 3 different sections that will enter as distinct
 
 Face recognition models
@@ -14,21 +15,24 @@ Face recognition models
 
 MVC
 7.- Remove softmax from previous models
-8.- Make MVC - CC model 1 with kmeans
-9.- Make MVC - CC model 2 with
-10.- Investigate about JULE and implement it
+8.- Make CC model 1 with kmeans
+9.- Make CC model 2 with kmeans and PCA
+10.- Make MVC model 1 with multiview kmeans
+11.- Make MVC model 2 with multiview kmeans and PCA
+12.- Make MVC model 2 with FRMVK
+13.- Investigate about JULE and implement it
 
 Results
-11.- Compare results with each database, denoting databases features like pixeled or in the wild
-12.- Compare time taken per model
+14.- Compare results with each database, denoting databases features like pixeled or in the wild
+15.- Compare time taken per model
 
 Writing
-13.- First chapter and Second chapter: Improve proposal
-14.- Third chapter: Obtaining datasets
-15.- Fourth chapter: Face detection
-16.- Fifth chapter: Finding ideal number of models
-17.- Sixth chapter: First results per model
-18.- Seventh chapter: MVC model
-19.- Eight chapter: Results
-20.- Nineth chapter: Conclutions
-21.- Tenth chapter: Future work
+16.- First chapter and Second chapter: Improve proposal
+17.- Third chapter: Obtaining datasets
+18.- Fourth chapter: Face detection
+19.- Fifth chapter: Finding ideal number of models
+20.- Sixth chapter: First results per model
+21.- Seventh chapter: MVC model
+22.- Eight chapter: Results
+23.- Nineth chapter: Conclutions
+24.- Tenth chapter: Future work

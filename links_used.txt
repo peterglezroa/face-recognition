@@ -1,1 +1,3 @@
 https://machinelearningmastery.com/how-to-perform-face-recognition-with-vggface2-convolutional-neural-network-in-keras/
+
+https://towardsdatascience.com/face-detection-models-which-to-use-and-why-d263e82c302c
