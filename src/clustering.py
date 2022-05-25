@@ -61,7 +61,7 @@ def dbscan_model(data:np.array, file_name:str=None) -> dict:
 #    plt.show()
 
     # Run DBSCAN
-    model = DBSCAN(eps=0.3, min_samples=2)
+    model = DBSCAN(eps=100, min_samples=2)
     model.fit(data)
 
     # Save as .pkl file

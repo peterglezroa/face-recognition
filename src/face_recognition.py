@@ -10,12 +10,15 @@ extractions models that will be then used for face recognition.
 from tensorflow.keras import Model
 from keras_vggface.vggface import VGGFace
 
-def get_recognition_model(model:str) -> Model:
-    if model == "vgg16":
-        return VGGFace(model="vgg16")
-    if model == "resnet50":
-        return VGGFace(model="resnet50")
-    if model == "senet50":
+def get_recognition_model(model_name:str) -> Model:
+    if model_name == "vgg16":
+        model = VGGFace(model = "vgg16")
+        # Remove softmax layer
+        model = Model(inputs=model.inputs, outputs=model.layers[-2].output)
+        return model
+    if model_name == "resnet50":
+        return VGGFace(model_name="resnet50")
+    if model_name == "senet50":
         return VGGFace(model="senet50")
 
     raise Exception("Not a valid face recognition model name")

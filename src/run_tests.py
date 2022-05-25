@@ -106,7 +106,7 @@ def evaluate_all(file_name: str) -> None:
     Runs all the proposed models with all the databases and saves it in the
     specified file.
     """
-    label_df = get_dataset_sample("yale", -1)
+    label_df = get_dataset_sample("lfw", -1)
     df = cluster_model("vgg16", "dbscan", label_df)
     df.to_csv(file_name)
 

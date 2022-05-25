@@ -19,7 +19,7 @@ def generate_image(paths: list, size:list=[56,56]) -> Image:
         dst.paste(img, (img_size[0]*(i%dims), img_size[1]*(i//dims)))
     return dst
 
-def view_all_clusters(df:pd.DataFrame, img_size:list=[1024,1024]) -> None:
+def view_all_clusters(df:pd.DataFrame, img_size:list=[2048,2048]) -> None:
     BORDER_SIZE = 20
     clusters = df["clusters"].unique()
     cdims = math.ceil(math.sqrt(len(clusters)))
