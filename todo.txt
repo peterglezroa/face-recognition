@@ -8,7 +8,7 @@ Face detection
 4.- [optional] Fragment the face in 3 different sections that will enter as distinct
 
 Face recognition models
-4.- Obtain atleast 5 models with pretrained values
+4.- (done) Obtain atleast 5 models with pretrained values
 5.- Score on atleast 2 datasets
 6.- Train if it is needed and then Score to compare
 7.- [optional] Obtain face mask model with pretrained values

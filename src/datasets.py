@@ -8,6 +8,7 @@ project.
 import os
 import numpy as np
 import pandas as pd
+from PIL import Image
 
 CELEBA_PATH="/home/peterglezroa/Documents/datasets/Face/CelebA"
 FLICKR_PATH="/home/peterglezroa/Documents/datasets/Face/Flickr"
@@ -23,18 +24,14 @@ def preprocess_dataframe(df:pd.DataFrame, size:list=[224,224]) -> np.array:
     @returns numpy array with the images value and the label to be processed
     through the model.
     """
-    # Open image and convert it to grayscale and into a numpy array
-    df["value"] = df.apply(lambda row:
-        np.array(Image.open(
-            f"{CELEBA_PATH}/img_align_celeba/{row['path']}"
-        ).convert("L"), "uint8"),
-        axis = 1
-    )
+    a = []
 
-    # Only value and label is needed
-    df = df.drop(columns=["path"])
-    df = df.loc[:, ["value", "label"]]
-    return df.to_numpy()
+    df = df.reset_index()
+    for index, row in df.iterrows():
+        img = Image.open(row["path"]).resize(size)
+        a.append(np.array(img))
+
+    return np.array(a)
 
 def obtain_celeba_images(n:int) -> pd.DataFrame:
     """
@@ -56,7 +53,10 @@ def obtain_celeba_images(n:int) -> pd.DataFrame:
         names = ["path", "label"],
         sep=' '
     )
-    df_sample = df.sample(n)
+    # Return all images when given a negative number
+    if n < 0: df_sample = df
+    else: df_sample = df.sample(n)
+
     root = os.path.join(CELEBA_PATH, "img_align_celeba/")
     df_sample["path"] = root + df_sample["path"]
     return df_sample
@@ -80,6 +80,10 @@ def obtain_lfw_images(n:int) -> pd.DataFrame:
                 paths.append(os.path.join(root, file))
                 labels.append(os.path.basename(root).replace('_', ' '))
     df = pd.DataFrame(data={"path": paths, "label": labels})
+
+    # Return all images when given a negative number
+    if n < 0:
+        return df
     return df.sample(n)
 
 def obtain_yale_images(n:int) -> pd.DataFrame:
@@ -106,4 +110,20 @@ def obtain_yale_images(n:int) -> pd.DataFrame:
                 paths.append(os.path.join(root, file))
             labels.append(label)
     df = pd.DataFrame(data={"path": paths, "label": labels})
+
+    # Return all images when given a negative number
+    if n < 0:
+        return df
     return df.sample(n)
+
+# VGGFace2
+# https://drive.google.com/drive/folders/1ZHy7jrd6cGb2lUa4qYugXe41G_Ef9Ibw
+
+def get_dataset_sample(dataset:str, n:int) -> pd.DataFrame:
+    if dataset == "celeba":
+        return obtain_celeba_images(n)
+    if dataset == "lfw":
+        return obtain_lfw_images(n)
+    if dataset == "yale":
+        return obtain_yale_images(n)
+    raise Exception("Dataset name not found")
