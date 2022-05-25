@@ -111,7 +111,7 @@ def evaluate_all(file_name: str) -> None:
     df.to_csv(file_name)
 
 def main():
-    evaluate_all("test.csv")
+    evaluate_all("../bin/test.csv")
 
 if __name__ == "__main__":
     main()

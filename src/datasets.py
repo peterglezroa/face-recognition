@@ -107,15 +107,26 @@ def obtain_yale_images(n:int) -> pd.DataFrame:
     labels = []
     for root, dirs, files in os.walk(YALE_PATH):
         for file in files:
-            # Add extension to files that do not have it
             label, ext = os.path.splitext(file)
-            if ext != ".gif":
-                os.rename(os.path.join(root, file),
-                    os.path.join(root, label + ext + ".gif"))
-                paths.append(os.path.join(root, label + ext + ".gif"))
+            path = os.path.join(root, file)
+
+            # If the file does not have extension (downloaded that way)
+            if ext != ".gif" and ext != ".png":
+                label += ext
+                ext = ".gif"
+
+            # Convert .gif to .png
+            if ext == ".gif":
+                img = Image.open(path)
+                new_path = os.path.join(root,label+".png") 
+                img.save(new_path, "png", optimize=True)
+                os.remove(path)
+                paths.append(new_path)
             else:
-                paths.append(os.path.join(root, file))
-            labels.append(label)
+                paths.append(path)
+
+            # Add label but remove the extra specification
+            labels.append(label.split('.')[0])
     df = pd.DataFrame(data={"path": paths, "label": labels})
 
     # Return all images when given a negative number
