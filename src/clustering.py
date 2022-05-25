@@ -3,7 +3,9 @@ clustering.py
 -------------
 File that contains the clustering algorithms used for the project
 """
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, DBSCAN
+from sklearn.neighbors import NearestNeighbors
+import matplotlib.pyplot as plt
 import numpy as np
 
 def load_kmeans_model(file_name:str) -> KMeans:
@@ -47,7 +49,19 @@ def dbscan_model(data:np.array, file_name:str=None) -> dict:
     # neighborhood of the other
     # min_samples = number of samples in a neighborhood for a point to be
     # considered as a core point
-    model = DBSCAN(eps=0.5, min_samples=5, verbose=1)
+
+    # Calculate optimal eps
+    neigh = NearestNeighbors(n_neighbors = 2)
+    nbrs = neigh.fit(data)
+    distances, indices = nbrs.kneighbors(data)
+
+    distances = np.sort(distances, axis=0)
+    distances = distances[:, 1]
+    plt.plot(distances)
+    plt.show()
+
+    # Run DBSCAN
+    model = DBSCAN(eps=0.3, min_samples=3)
     model.fit(data)
 
     # Save as .pkl file
@@ -57,7 +71,7 @@ def dbscan_model(data:np.array, file_name:str=None) -> dict:
 
     return {
         "clusters": model.labels_,
-        "centroids": model.cluster_centers_
+        "centroids": []
     }
 
 def cluster_data(model:str, data:np.array, n_clusters:int, file_name:str=None) -> dict:
@@ -70,7 +84,8 @@ def cluster_data(model:str, data:np.array, n_clusters:int, file_name:str=None) -
     """
     if model == "kmeans":
         return kmeans_model(data, n_clusters, file_name=file_name)
-#    if model == "dbscan":
+    if model == "dbscan":
+        return dbscan_model(data, file_name=file_name)
 #    if model == "agglomerative":
 #    if model == "optics":
 

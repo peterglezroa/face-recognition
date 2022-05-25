@@ -34,9 +34,9 @@ def preprocess_dataframe(df:pd.DataFrame, size:list=[224,224]) -> np.array:
         if len(img.size) < 3:
             rgbimg = Image.new("RGB", img.size)
             rgbimg.paste(img)
-            img = rgbimg
-
-        a.append(np.array(img))
+            a.append(np.array(rgbimg))
+        else:
+            a.append(np.array(img))
 
     return np.array(a)
 
