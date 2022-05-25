@@ -29,6 +29,13 @@ def preprocess_dataframe(df:pd.DataFrame, size:list=[224,224]) -> np.array:
     df = df.reset_index()
     for index, row in df.iterrows():
         img = Image.open(row["path"]).resize(size)
+
+        # Check if it is grayscale
+        if len(img.size) < 3:
+            rgbimg = Image.new("RGB", img.size)
+            rgbimg.paste(img)
+            img = rgbimg
+
         a.append(np.array(img))
 
     return np.array(a)
@@ -105,7 +112,7 @@ def obtain_yale_images(n:int) -> pd.DataFrame:
             if ext != ".gif":
                 os.rename(os.path.join(root, file),
                     os.path.join(root, label + ext + ".gif"))
-                paths.append(os.path.join(root, file + ".gif"))
+                paths.append(os.path.join(root, label + ext + ".gif"))
             else:
                 paths.append(os.path.join(root, file))
             labels.append(label)
