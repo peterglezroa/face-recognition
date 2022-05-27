@@ -4,10 +4,14 @@ datasets.py
 ----------
 File used for obtaining n amount of photos from the datasets obtained for this
 project.
+
+# VGGFace2
+# https://drive.google.com/drive/folders/1ZHy7jrd6cGb2lUa4qYugXe41G_Ef9Ibw
 """
 import os
 import numpy as np
 import pandas as pd
+from numpy.random import choice
 from PIL import Image
 
 CELEBA_PATH="/home/peterglezroa/Documents/datasets/Face/CelebA"
@@ -40,8 +44,22 @@ def preprocess_dataframe(df:pd.DataFrame, size:list=[224,224]) -> np.array:
 
     return np.array(a)
 
-def obtain_celeba_images(n:int) -> pd.DataFrame:
+def extract_people_images(df: pd.DataFrame, n:int) -> pd.DataFrame:
     """
+    From a given dataframe of the dataset, it looks for n unique people in the
+    data and returns the images related to those people
+    
+    udf = df.groupby(by="label", as_index=False).agg({"n": pd.Series.nunique})
+    udf = udf.sort_values(by=["n"])
+    """
+    uniq_labels = df["label"].unique()
+    print(uniq_labels.shape)
+    if len(uniq_labels) > n and n > 0: uniq_labels = choice(uniq_labels, n)
+    return df[df["label"].isin(uniq_labels)]
+
+def obtain_celeba_images(n_people:int) -> pd.DataFrame:
+    """
+    Unique labels: 10,177
     It is expected for the structure to be as following:
         <CELEBA_PATH>/
         ├─ identity_CelebA.txt
@@ -60,16 +78,17 @@ def obtain_celeba_images(n:int) -> pd.DataFrame:
         names = ["path", "label"],
         sep=' '
     )
-    # Return all images when given a negative number
-    if n < 0: df_sample = df
-    else: df_sample = df.sample(n)
+
+    # Extract according to unique number of people
+    df = extract_people_images(df, n_people)
 
     root = os.path.join(CELEBA_PATH, "img_align_celeba/")
-    df_sample["path"] = root + df_sample["path"]
-    return df_sample
+    df["path"] = root + df["path"]
+    return df
 
-def obtain_lfw_images(n:int) -> pd.DataFrame:
+def obtain_lfw_images(n_people:int) -> pd.DataFrame:
     """
+    unique labels: 5,749
     It is expected for the structure to be as following:
     <LFW_PATH>/
     ├─<Person name/label>
@@ -86,14 +105,11 @@ def obtain_lfw_images(n:int) -> pd.DataFrame:
             if file.endswith("png") or file.endswith("jpg"):
                 paths.append(os.path.join(root, file))
                 labels.append(os.path.basename(root).replace('_', ' '))
+
     df = pd.DataFrame(data={"path": paths, "label": labels})
+    return extract_people_images(df, n_people)
 
-    # Return all images when given a negative number
-    if n < 0:
-        return df
-    return df.sample(n)
-
-def obtain_yale_images(n:int) -> pd.DataFrame:
+def obtain_yale_images(n_people:int) -> pd.DataFrame:
     """
     It is expected for the structure to be as following:
     <YALE_PATH>/
@@ -127,15 +143,9 @@ def obtain_yale_images(n:int) -> pd.DataFrame:
 
             # Add label but remove the extra specification
             labels.append(label.split('.')[0])
+
     df = pd.DataFrame(data={"path": paths, "label": labels})
-
-    # Return all images when given a negative number
-    if n < 0:
-        return df
-    return df.sample(n)
-
-# VGGFace2
-# https://drive.google.com/drive/folders/1ZHy7jrd6cGb2lUa4qYugXe41G_Ef9Ibw
+    return extract_people_images(df, n_people)
 
 def get_dataset_sample(dataset:str, n:int) -> pd.DataFrame:
     if dataset == "celeba":
@@ -145,3 +155,10 @@ def get_dataset_sample(dataset:str, n:int) -> pd.DataFrame:
     if dataset == "yale":
         return obtain_yale_images(n)
     raise Exception("Dataset name not found")
+
+def main():
+    df = get_dataset_sample("lfw", 5)
+    df.to_csv("test_dataset.csv")
+
+if __name__ == "__main__":
+    main()
