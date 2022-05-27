@@ -123,7 +123,7 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
         
         # Get scores for each clustering model
         for clus_model in CLUSTERING_MODELS:
-            model_name = ' '.join([rec_model, clus_model])
+            model_name = ' '.join(["S", rec_model, clus_model])
             print("Running model " + model_name + "...")
             df[model_name] = cluster_data(clus_model, embeddings[rec_model], people)
     
@@ -138,7 +138,7 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
             print(embs.shape)
 
             for clus_model in CLUSTERING_MODELS:
-                model_name = ' '.join([*subset, clus_model])
+                model_name = ' '.join(["CC", *subset, clus_model])
                 print("Running model " + model_name + "...")
                 df[model_name] = cluster_data(clus_model, embs, people)
 
@@ -148,7 +148,7 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
                 mv_embs.append(embeddings[rec_model])
 
             for clus_model in MVCLUSTERING_MODELS:
-                model_name = ' '.join([*subset, "mvc_"+clus_model])
+                model_name = ' '.join(["MVC", *subset, "mvc_"+clus_model])
                 df[model_name] = mvc_cluster_data(clus_model, mv_embs, people)
 
     # TEST CSV ---------------------------------------------------------------
@@ -178,7 +178,7 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
 
 def main():
     evaluate_all("yale", -1,
-    "../bin/celeba10_"+datetime.now().strftime("%Y%m%d_%H%M")+".csv")
+    "../bin/yale_"+datetime.now().strftime("%Y%m%d_%H%M")+".csv")
 
 if __name__ == "__main__":
     main()
