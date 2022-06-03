@@ -7,6 +7,7 @@ import math
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
+import sys
 from PIL import Image
 
 def generate_image(paths: list, size:list=[56,56]) -> Image:
@@ -57,7 +58,7 @@ def view_all_models_from_test(fname:str) -> None:
             view_all_clusters(df, os.path.join(folder, col+".png"), col)
 
 def main():
-    view_all_models_from_test("../bin/yale20220527_0501.csv")
+    view_all_models_from_test(sys.argv[1])
 
 if __name__ == "__main__":
     main()

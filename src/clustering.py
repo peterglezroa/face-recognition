@@ -115,7 +115,7 @@ def mvc_cluster_data(model_name:str, data:np.array, n_clusters:int, folder_name:
     # If n_clusters is known
     if model_name == "kmeans":
         print("Initializing MultiView K Means...")
-        model = mv_cluster.MultiviewKMeans(n_clusters=n_clusters, max_iter=100)
+        model = mv_cluster.MultiviewKMeans(n_clusters=n_clusters, n_jobs=-1)
     else: raise Exception("Not a valid cluster algorithm name")
 
     # PCA data if indicated

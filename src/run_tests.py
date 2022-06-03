@@ -102,6 +102,8 @@ TODO: JULE
 def cluster_models_jules()
 """
 
+import seaborn
+import matplotlib.pyplot as plt
 def evaluate_all(dataset:str, people:int, file_name:str) -> None:
     """
     Runs all the proposed models to evaluate clustering for face recognition.
@@ -176,8 +178,11 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
     resdf = resdf.append(s)
     resdf.to_csv(RESULTS_PATH, index=False)
 
+    seaborn.barplot(y=d[3:], x=cols[3:])
+    plt.show()
+
 def main():
-    evaluate_all("yale", -1,
+    evaluate_all("celeba", 200,
     "../bin/yale_"+datetime.now().strftime("%Y%m%d_%H%M")+".csv")
 
 if __name__ == "__main__":
