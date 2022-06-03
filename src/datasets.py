@@ -15,11 +15,11 @@ from numpy.random import choice
 from PIL import Image
 
 CELEBA_PATH="/home/peterglezroa/Documents/datasets/Face/CelebA"
-FLICKR_PATH="/home/peterglezroa/Documents/datasets/Face/Flickr"
 LFW_PATH="/home/peterglezroa/Documents/datasets/Face/Labeled Face in The Wild"
+MASKEDLFW_PATH="/home/peterglezroa/Documents/datasets/Face/lfw_masked/lfw_train"
 YALE_PATH="/home/peterglezroa/Documents/datasets/Face/yalefaces"
 
-AVAILABLE_DATASETS = ["celeba", "lfw", "yale"]
+AVAILABLE_DATASETS = ["celeba", "lfw", "maskedlfw", "yale"]
 
 def preprocess_dataframe(df:pd.DataFrame, size:list=[224,224]) -> np.array:
     """
@@ -110,6 +110,29 @@ def obtain_lfw_images(n_people:int) -> pd.DataFrame:
     df = pd.DataFrame(data={"path": paths, "label": labels})
     return extract_people_images(df, n_people)
 
+def obtain_maskedlfw_images(n_people:int) -> pd.DataFrame:
+    """
+    unique labels: 5,749
+    It is expected for the structure to be as following:
+    <MASKEDLFW_PATH>/
+    ├─<Person name/label>
+        ├─<images>
+
+    @returns a pandas DataFrame of a n size sample with the following cols:
+        - path: path to the location of the image
+        - label: name of the person within the image
+    """
+    paths = []
+    labels = []
+    for root, dirs, files, in os.walk(MASKEDLFW_PATH):
+        for file in files:
+            if file.endswith("png") or file.endswith("jpg"):
+                paths.append(os.path.join(root, file))
+                labels.append(os.path.basename(root).replace('_', ' '))
+
+    df = pd.DataFrame(data={"path": paths, "label": labels})
+    return extract_people_images(df, n_people)
+
 def obtain_yale_images(n_people:int) -> pd.DataFrame:
     """
     It is expected for the structure to be as following:
@@ -153,12 +176,14 @@ def get_dataset_sample(dataset:str, n:int) -> pd.DataFrame:
         return obtain_celeba_images(n)
     if dataset == "lfw":
         return obtain_lfw_images(n)
+    if dataset == "maskedlfw":
+        return obtain_maskedlfw_images(n)
     if dataset == "yale":
         return obtain_yale_images(n)
     raise Exception("Dataset name not found")
 
 def main():
-    df = get_dataset_sample("lfw", 5)
+    df = get_dataset_sample("maskedlfw", 50)
     df.to_csv("test_dataset.csv")
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ from face_recognition import get_recognition_model, RECOGNITION_MODELS
 from sklearn.metrics import normalized_mutual_info_score as nmi_score
 
 RESULTS_PATH = "../results.csv"
-MAX_PEOPLE_ALLOWED = 100
+MAX_PEOPLE_ALLOWED = 500
 
 def score_cluster(df:pd.DataFrame, cluster_col:str="clusters") -> float:
     """
