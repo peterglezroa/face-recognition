@@ -4,6 +4,8 @@ run_tests.py
 File that includes the functions to run all or specific models with specific
 datasets and save the results on a csv file.
 """
+import ClusterEnsembles as CE
+import time
 import numpy as np
 import os
 import pandas as pd
@@ -115,6 +117,7 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
     if people <= 0:
         people = len(df["label"].unique())
     data = preprocess_dataframe(df)
+    row = dict()
 
     # GET EMBEDDINGS AND SINGLE CLUSTERING -----------------------------------
     embeddings = dict()
@@ -126,10 +129,12 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
         # Get scores for each clustering model
         for clus_model in CLUSTERING_MODELS:
             model_name = ' '.join(["S", rec_model, clus_model])
+            st = time.time() # Start time for tracking
             print("Running model " + model_name + "...")
             df[model_name] = cluster_data(clus_model, embeddings[rec_model], people)
+            row[model_name+" time"] = time.time() - st
     
-    # CC and MVC for every combination ---------------------------------------
+    # CC, MVEC and MVC for every combination ---------------------------------
     for l in range(2, len(RECOGNITION_MODELS)+1):
         for subset in combinations(RECOGNITION_MODELS, l):
             # CC -------------------------------------------------------------
@@ -137,12 +142,30 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
             for i, rec_model in enumerate(subset):
                 if i == 0: embs = embeddings[rec_model]
                 else: embs = np.append(embs, embeddings[rec_model], axis=1)
-            print(embs.shape)
+            print("CC shape: ", embs.shape)
 
             for clus_model in CLUSTERING_MODELS:
                 model_name = ' '.join(["CC", *subset, clus_model])
+                st = time.time() # Start time for tracking
                 print("Running model " + model_name + "...")
                 df[model_name] = cluster_data(clus_model, embs, people)
+                row[model_name+" time"] = time.time() - st
+
+            # MVEC -----------------------------------------------------------
+            # Do k-means clustering for each clustering model
+            for clus_model in CLUSTERING_MODELS:
+                # Make a list of already calculated clusters
+                mvec_clus = [np.array(df[' '.join(['S', r_model, clus_model])].tolist(), int)
+                    for r_model in subset]
+                st = time.time() # Start time for tracking
+                model_name = ' '.join(["MVEC", *subset, clus_model])
+                print("Running model " + model_name + "...")
+                df[model_name] = CE.cluster_ensembles(mvec_clus)
+                exec_time = time.time() - st # Ensemble cluster time
+                row[model_name+" time"] = sum([
+                    row[' '.join(['S', r_model, clus_model, "time"])]
+                    for r_model in subset
+                ])
 
             # MVC ------------------------------------------------------------
             mv_embs = []
@@ -151,38 +174,35 @@ def evaluate_all(dataset:str, people:int, file_name:str) -> None:
 
             for clus_model in MVCLUSTERING_MODELS:
                 model_name = ' '.join(["MVC", *subset, "mvc_"+clus_model])
+                st = time.time()
                 df[model_name] = mvc_cluster_data(clus_model, mv_embs, people)
+                row[model_name+" time"] = time.time() - st
 
     # TEST CSV ---------------------------------------------------------------
     print("Saving test csv at: " + file_name)
     df.to_csv(file_name)
 
     # RESULTS CSV ------------------------------------------------------------
-    cols = ["Date", "Dataset", "# People"]
-    d = [datetime.now().strftime("%Y-%m-%d %H:%M"), dataset, people]
+    row["Date"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+    row["Dataset"] = dataset
+    row["# People"] = people
 
     print("Evaluating clusters...")
     for col in df:
         if col != "path" and col != "label":
             nmi = nmi_score(df["label"], df[col])
-            cols.append(col)
-            d.append(nmi)
+            row[col] = nmi
             print("Model " + col + ": " + str(nmi))
 
     if not os.path.exists(RESULTS_PATH):
         resdf = pd.DataFrame(columns=cols)
     else: resdf = pd.read_csv(RESULTS_PATH)
 
-    s = pd.DataFrame([d], columns=cols)
-#    resdf = pd.concat([resdf, s], axis=1, verify_integrity=True)
-    resdf = resdf.append(s)
+    resdf = resdf.append(row, ignore_index=True)
     resdf.to_csv(RESULTS_PATH, index=False)
 
-    seaborn.barplot(y=d[3:], x=cols[3:])
-    plt.show()
-
 def main():
-    evaluate_all("celeba", 200,
+    evaluate_all("yale", -1,
     "../bin/yale_"+datetime.now().strftime("%Y%m%d_%H%M")+".csv")
 
 if __name__ == "__main__":

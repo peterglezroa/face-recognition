@@ -1,6 +1,6 @@
 Datasets
 1.- (done) Scripts to obtain n amount of images of each specific dataset
-2.- Display a list of images from csv
+2.- (done) Display a list of images from csv
 
 Face detection
 (Compare mtcnn vs dlib)
@@ -10,29 +10,31 @@ Face detection
 Face recognition models
 4.- (done) Obtain atleast 5 models with pretrained values
 5.- Score on atleast 2 datasets
-6.- Train if it is needed and then Score to compare
+6.- (done) Train if it is needed and then Score to compare
 7.- [optional] Obtain face mask model with pretrained values
 
+CC
+8.- (done) Remove softmax from previous models
+9.- (done) Make CC model 1 with kmeans
+10.- (done) Make CC model 2 with kmeans and PCA
+
 MVC
-7.- Remove softmax from previous models
-8.- Make CC model 1 with kmeans
-9.- Make CC model 2 with kmeans and PCA
-10.- Make MVC model 1 with multiview kmeans
-11.- Make MVC model 2 with multiview kmeans and PCA
-12.- Make MVC model 2 with FRMVK
-13.- Investigate about JULE and implement it
+11.- (done) Make MVC model 1 with multiview kmeans
+12.- (done) Make MVC model 2 with multiview kmeans and PCA
+13.- [optional] Make MVC model 2 with FRMVK
+14.- [optional] Investigate about JULE and implement it
 
 Results
-14.- Compare results with each database, denoting databases features like pixeled or in the wild
-15.- Compare time taken per model
+15.- Compare results with each database, denoting databases features like pixeled or in the wild
+16.- Compare time taken per model
 
 Writing
-16.- First chapter and Second chapter: Improve proposal
-17.- Third chapter: Obtaining datasets
-18.- Fourth chapter: Face detection
-19.- Fifth chapter: Finding ideal number of models
-20.- Sixth chapter: First results per model
-21.- Seventh chapter: MVC model
-22.- Eight chapter: Results
-23.- Nineth chapter: Conclutions
-24.- Tenth chapter: Future work
+17.- First chapter and Second chapter: Improve proposal
+18.- Third chapter: Obtaining datasets
+19.- Fourth chapter: Face detection
+20.- Fifth chapter: Finding ideal number of models
+21.- Sixth chapter: First results per model
+22.- Seventh chapter: MVC model
+23.- Eight chapter: Results
+24.- Nineth chapter: Conclutions
+25.- Tenth chapter: Future work
