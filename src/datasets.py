@@ -19,6 +19,8 @@ FLICKR_PATH="/home/peterglezroa/Documents/datasets/Face/Flickr"
 LFW_PATH="/home/peterglezroa/Documents/datasets/Face/Labeled Face in The Wild"
 YALE_PATH="/home/peterglezroa/Documents/datasets/Face/yalefaces"
 
+AVAILABLE_DATASETS = ["celeba", "lfw", "yale"]
+
 def preprocess_dataframe(df:pd.DataFrame, size:list=[224,224]) -> np.array:
     """
     Expects a dataframe:
@@ -53,7 +55,6 @@ def extract_people_images(df: pd.DataFrame, n:int) -> pd.DataFrame:
     udf = udf.sort_values(by=["n"])
     """
     uniq_labels = df["label"].unique()
-    print(uniq_labels.shape)
     if len(uniq_labels) > n and n > 0: uniq_labels = choice(uniq_labels, n)
     return df[df["label"].isin(uniq_labels)]
 
