@@ -1,15 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
-
-%\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out
                                                           % if you need a4paper
-\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4
                                                           % paper
 \usepackage[utf8]{inputenc}  % Ng Edit for accents in spanish
 \usepackage[spanish]{babel}  % Ng Edit for accents in spanish
 \usepackage{hyperref}        % Ng Edit for adding urls
 \usepackage{graphicx}        % Ng Edit for adding graphics
+\usepackage{svg}
 \IEEEoverridecommandlockouts                              % This command is only
                                                           % needed if you want to
                                                           % use the \thanks command
@@ -42,18 +40,22 @@ José Antonio Cantoral Ceballos}
 
     \begin{abstract}
         En los últimos años se ha demostrado la complejidad en la realización de
-        algoritmos de detección y reconocimiento de rostros, ya que estos comparten
-        un alto grado de similitud estructural. De esta manera, se requieren de la
-        utilización de \textit{redes neuronales convolucionales} (\textit{CNN} por sus siglas
-        en inglés) para la extración de características de la imagen.
-        Estas requieren de una base de datos de gran tamaño para un
-        entrenamiento exitoso que desempeñe correctamente en diferentes situación de
-        iluminación, calidad de la imagen, perfil de la cara, entre otros.
-        Por lo que se propone utilizar una combinación de diferentes
-        \textit{CNN}'s previamente entrenadas con diferentes arquitecturas y bases de datos.
+        algoritmos de detección y reconocimiento de rostros, ya que estos requieren de un alto
+        nivel de abstracción porque existe un alto grado de similitud estructural entre los
+        diferentes rostros. De esta manera, se requiere de la utilización de técnicas de
+        \textit{deep learning}, cómo las \textit{redes neuronales convolucionales} (\textit{CNN}
+        por sus siglas en inglés) para la extración de características o \textit{features} que 
+        proporciona una imagen.  Estas técnicas requieren de un modelo sumamente complejo y una
+        base de datos de gran tamaño para un entrenamiento exitoso que desempeñe correctamente en
+        diferentes situación de iluminación, calidad de la imagen, perfil de la cara, entre otros.
+        Cumplir con las características previamente mencionadas significa una gran inversión de
+        recursos, la cual sólo empresas de tamaños inmensos son capaces de invertir.
+        Por lo que se propone utilizar una combinación de diferentes \textit{CNN}'s previamente
+        entrenadas con diferentes arquitecturas y bases de datos.
         Se espera que las diferentes perspectivas o características extraidas por cada modelo
         se complementen entre sí para tener una representación más completa (aunque
-        más compleja) del rostro a analizar. Finalmente se utilizará esta representación
+        más compleja) del rostro a analizar sin la necesidad de entrenar un modelo de complejidad
+        tan grande como la previamente mencionada. Finalmente se utilizará esta representación
         más compleja para determinar los grupos de imágenes de acuerdo a las diferentes personas
         en la base de datos.
     \end{abstract}
@@ -182,7 +184,7 @@ José Antonio Cantoral Ceballos}
     En esta investigación se propone utilizar múltiples modelos de redes neuronales convolucionales
     (\textit{CNN}) en combinación para obtener una representación de mayor complejidad pero de
     mayor precisión. Al igual que el modelo de Guérin \cite{CombiningCNN} se espera un aumento 
-    en el tiempo de ejecución del programa, pero se busca resultados constantes contextos
+    en el tiempo de ejecución del programa, pero se busca resultados constantes durante contextos
     diferentes provenientes de bases de datos públicas.
 
     Así mismo, para acelerar el proceso de comparación entre imágenes se considera utilizar
@@ -199,23 +201,55 @@ José Antonio Cantoral Ceballos}
     Ya que se espera que entre más modelos utilizados la complejidad de tiempo crezca
     exponencialmente, se utilizará el algoritmo de reducción de dimensiones
     \textit{Principal Component Analysis (PCA)} para reducir el tiempo de procesamiento.
-    % Por que CC
-    % Pros CC
-    % Cons CC
-    % PDA
-    \subsection{Utilización de Métodos de Conjunto de Agrupamiento (MVEC)}
-    % Por que CC
-    % Pros CC
-    % Cons CC
-    % PDA
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=8cm]{./figs/cc.png}
+        \label{fig: Concatenación}
+        \caption{Representación visual del acercamiento de concatenación.}
+    \end{figure}
+
+    \subsection{Utilización de Métodos de Consenso de Agrupamiento (MVEC)}
+    Existen diferentes algoritmos e implementaciones para el agrupamiento de información. Aunque
+    haya una gran variedad de estos algoritmos, muchos de estos encuentran soluciones apropiadas
+    pero no óptimas. Estos convergen a un óptimo local y no a un óptimo global, aunque existe
+    la pequeña posibilidad de que algunos sí llegan a este último (cómo por ejemplo: el algoritmo
+    de \textit{k-means}. Ya que llegar a una solución óptima global es un poco aleatoria por la
+    dependencia de la inicialización y distribución de las diferentes entradas, escoger un
+    algoritmo de agrupación apto para la información persentada puede ser una tarea difícil. Para
+    solucionar este problema, diferentes investigadores introdujeron el concepto de métodos de
+    conjuntos para agrupamientos (\textit{Cluster Ensembles - CE} en inglés), ó también conocidos
+    como métodos de consenso de agrupamiento (\textit{Consensus Clustering} en inglés). Los
+    algoritmos de \textit{CE} combinan los diferentes resultados de agrupamiento para generar un
+    agrupamiento final, sin necesitar acceso a los algoritmos o registros de información.
+    \cite{Golalipour2021}
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=8cm]{./figs/mvec.png}
+        \label{fig: MVEC}
+        \caption{Representación visual del acercamiento de consenso.}
+    \end{figure}
+
+    Para el enfoque de este proyecto, utilizaremos la librería de Python proporcionada por Sano
+    Takehiro \cite{Sano_ClusterEnsembles_2021}; con el algoritmo de \textit{Hybrid Bipartite Graph
+    Formulation}. \cite{Fern2004}
 
     \subsection{Utilización de Agrupamiento de Múltiples Vistas (MVC)}
-    Al igual que en diferentes temas en la era de \textit{Big Data}, existen
-    diferentes perspectivas del mismo objeto que se pueden utilizar para complementarse
-    mutuamente. Por lo cual, el algoritmo de
-    \textit{Agrupación de vistas múltiples (Multi-view clustering - MVC)} ha ganado
-    popularidad por su éxito en modelos que obtienen información del mismo objeto
-    desde diferentes fuentes.
+    En la era de \textit{Big Data}, se obtienen perspectivas diferentes de un mismo objeto desde
+    una gran variedad de sensores. Estos sensores producen una salida de diferentes características
+    entre sí, es decir son perspectivas que se complementan entre ellas para una representación
+    más compleja del objeto observado. Por lo cual, ha surgido una tendencia a experimentar con
+    algoritmos que puedan utilizar las diferentes dimensiones de cada vista para hacer predicciones
+    más certeras.  En el ámbito de agrupamiento de información de múltiples vistas, ha incrementado
+    en popularidad el algoritmo de Agrupación de vistas múltiples; \textit{Multi-View Clustering
+    (MVC)} en inglés.
+
+    Esta exhibición de propiedades heterógenas contiene un potencial de contener posibles
+    conecciones entre ellas, las cuales pueden ser explotadas para desenmascarar características
+    únicas de cada entrada de información. La idea principal de utilizar \textit{MVC} es
+    particionar objetos de acuerdo a diferente criteria relacionada con estas conecciones de sus
+    diferentes vistas. \cite{Yang2018}
     % Que es mvc
     % Por que mvc
 

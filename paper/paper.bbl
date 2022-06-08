@@ -42,6 +42,23 @@ A.~P. Song, Q.~Hu, X.~H. Ding, X.~Y. Di, and Z.~H. Song, ``Similar face
 G.~Birchall, T.~Michael, and T.~Sun, ``Chinese users claim iphone x face
   recognition can’t tell them apart,'' 12 2017.
 
+\bibitem{Golalipour2021}
+K.~Golalipour, E.~Akbari, S.~S. Hamidi, M.~Lee, and R.~Enayatifar, ``From
+  clustering to clustering ensemble selection: A review,'' {\em Engineering
+  Applications of Artificial Intelligence}, vol.~104, p.~104388, 9 2021.
+
+\bibitem{Sano_ClusterEnsembles_2021}
+T.~Sano, ``{ClusterEnsembles},'' 8 2021.
+
+\bibitem{Fern2004}
+X.~Z. Fern and C.~E. Brodley, ``Solving cluster ensemble problems by bipartite
+  graph partitioning,'' {\em Proceedings, Twenty-First International Conference
+  on Machine Learning, ICML 2004}, pp.~281--288, 2004.
+
+\bibitem{Yang2018}
+Y.~Yang and H.~Wang, ``Multi-view clustering: A survey,'' {\em Big Data Mining
+  and Analytics}, vol.~1, pp.~83--107, 6 2018.
+
 \bibitem{NMI}
 A.~F. McDaid, D.~Greene, and N.~Hurley, ``Normalized mutual information to
   evaluate overlapping community finding algorithms,'' 10 2011.

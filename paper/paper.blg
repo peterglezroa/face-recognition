@@ -5,46 +5,48 @@ The style file: ieeetr.bst
 Database file #1: refs.bib
 Warning--entry type for "Birchall2017" isn't style-file defined
 --line 174 of file refs.bib
+Warning--entry type for "Sano_ClusterEnsembles_2021" isn't style-file defined
+--line 218 of file refs.bib
 Warning--empty journal in NMI
-You've used 10 entries,
+You've used 14 entries,
             1876 wiz_defined-function locations,
-            556 strings with 5213 characters,
-and the built_in function-call counts, 3067 in all, are:
-= -- 304
-> -- 115
+            585 strings with 5891 characters,
+and the built_in function-call counts, 4111 in all, are:
+= -- 409
+> -- 152
 < -- 0
-+ -- 42
-- -- 32
-* -- 227
-:= -- 428
-add.period$ -- 10
-call.type$ -- 10
-change.case$ -- 10
++ -- 56
+- -- 42
+* -- 294
+:= -- 568
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 14
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 147
-empty$ -- 271
-format.name$ -- 32
-if$ -- 758
+cite$ -- 15
+duplicate$ -- 202
+empty$ -- 367
+format.name$ -- 42
+if$ -- 1023
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 9
-newline$ -- 33
-num.names$ -- 10
-pop$ -- 23
+int.to.str$ -- 14
+missing$ -- 12
+newline$ -- 45
+num.names$ -- 14
+pop$ -- 36
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 130
+skip$ -- 182
 stack$ -- 0
-substring$ -- 243
-swap$ -- 76
+substring$ -- 306
+swap$ -- 105
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 26
-width$ -- 12
-write$ -- 96
-(There were 2 warnings)
+while$ -- 35
+width$ -- 16
+write$ -- 132
+(There were 3 warnings)
