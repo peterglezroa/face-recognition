@@ -1,19 +1,49 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{CombiningCNN}
-Joris Guérin, Stéphane Thiery, Eric Nyiri, Olivier Gibaru, and Byron Boots.
-\newblock Combining pretrained cnn feature extractors to enhance clustering of
-  complex natural images.
-\newblock {\em Neurocomputing}, 423:551--571, 1 2021.
+J.~Guérin, S.~Thiery, E.~Nyiri, O.~Gibaru, and B.~Boots, ``Combining
+  pretrained cnn feature extractors to enhance clustering of complex natural
+  images,'' {\em Neurocomputing}, vol.~423, pp.~551--571, 1 2021.
+
+\bibitem{Wang2021}
+M.~Wang and W.~Deng, ``Deep face recognition: A survey,'' {\em Neurocomputing},
+  vol.~429, pp.~215--244, 3 2021.
+
+\bibitem{FaceDetection2001}
+E.~Hjelmås and B.~K. Low, ``Face detection: A survey,'' {\em Computer Vision
+  and Image Understanding}, vol.~83, pp.~236--274, 2001.
+
+\bibitem{MTCNN}
+K.~Zhang, Z.~Zhang, Z.~Li, and Y.~Qiao, ``Joint face detection and alignment
+  using multi-task cascaded convolutional networks,'' {\em IEEE Signal
+  Processing Letters}, vol.~23, pp.~1499--1503, 4 2016.
+
+\bibitem{Bodini2019}
+M.~Bodini, ``A review of facial landmark extraction in 2d images and videos
+  using deep learning,'' {\em Big Data and Cognitive Computing}, vol.~3,
+  pp.~1--14, 3 2019.
+
+\bibitem{Young1987}
+A.~W. Young, D.~Hellawell, and D.~C. Hay, ``Configurational information in face
+  perception,'' {\em Perception}, vol.~16, pp.~747--759, 1987.
+
+\bibitem{Andrews2010}
+T.~J. Andrews, J.~Davies-Thompson, A.~Kingstone, and A.~W. Young, ``Internal
+  and external features of the face are represented holistically in
+  face-selective regions of visual cortex,'' {\em Journal of Neuroscience},
+  vol.~30, pp.~3544--3552, 3 2010.
 
 \bibitem{IECNN}
-An~Ping Song, Qian Hu, Xue~Hai Ding, Xin~Yi Di, and Zi~Heng Song.
-\newblock Similar face recognition using the ie-cnn model.
-\newblock {\em IEEE Access}, 8:45244--45253, 2020.
+A.~P. Song, Q.~Hu, X.~H. Ding, X.~Y. Di, and Z.~H. Song, ``Similar face
+  recognition using the ie-cnn model,'' {\em IEEE Access}, vol.~8,
+  pp.~45244--45253, 2020.
 
-\bibitem{Yang2018}
-Yan Yang and Hao Wang.
-\newblock Multi-view clustering: A survey.
-\newblock {\em Big Data Mining and Analytics}, 1:83--107, 6 2018.
+\bibitem{Birchall2017}
+G.~Birchall, T.~Michael, and T.~Sun, ``Chinese users claim iphone x face
+  recognition can’t tell them apart,'' 12 2017.
+
+\bibitem{NMI}
+A.~F. McDaid, D.~Greene, and N.~Hurley, ``Normalized mutual information to
+  evaluate overlapping community finding algorithms,'' 10 2011.
 
 \end{thebibliography}

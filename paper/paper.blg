@@ -1,46 +1,50 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: paper.aux
-The style file: plain.bst
+The style file: ieeetr.bst
 Database file #1: refs.bib
-You've used 3 entries,
-            2118 wiz_defined-function locations,
-            524 strings with 4570 characters,
-and the built_in function-call counts, 1191 in all, are:
-= -- 111
-> -- 69
+Warning--entry type for "Birchall2017" isn't style-file defined
+--line 174 of file refs.bib
+Warning--empty journal in NMI
+You've used 10 entries,
+            1876 wiz_defined-function locations,
+            556 strings with 5213 characters,
+and the built_in function-call counts, 3067 in all, are:
+= -- 304
+> -- 115
 < -- 0
-+ -- 27
-- -- 24
-* -- 101
-:= -- 210
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 21
++ -- 42
+- -- 32
+* -- 227
+:= -- 428
+add.period$ -- 10
+call.type$ -- 10
+change.case$ -- 10
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 33
-empty$ -- 82
-format.name$ -- 24
-if$ -- 238
+cite$ -- 11
+duplicate$ -- 147
+empty$ -- 271
+format.name$ -- 32
+if$ -- 758
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 3
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 15
+int.to.str$ -- 10
+missing$ -- 9
+newline$ -- 33
+num.names$ -- 10
+pop$ -- 23
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 0
 quote$ -- 0
-skip$ -- 22
+skip$ -- 130
 stack$ -- 0
-substring$ -- 87
-swap$ -- 3
+substring$ -- 243
+swap$ -- 76
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
-warning$ -- 0
-while$ -- 9
-width$ -- 4
-write$ -- 35
+type$ -- 0
+warning$ -- 1
+while$ -- 26
+width$ -- 12
+write$ -- 96
+(There were 2 warnings)

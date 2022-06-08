@@ -1,7 +1,17 @@
 \BOOKMARK [1][-]{section.1}{Antecedentes}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Agrupamiento de im\341genes}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Combinaci\363n de CNN previamente entrenados}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Modelo IE-CNN}{section.1}% 4
-\BOOKMARK [1][-]{section.2}{Planteamiento del Problema}{}% 5
-\BOOKMARK [1][-]{section.3}{Contribuciones Esperadas}{}% 6
-\BOOKMARK [1][-]{section*.1}{References}{}% 7
+\BOOKMARK [2][-]{subsection.1.1}{Extracci\363n de Caracter\355sticas en Im\341genes}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Reconocimiento de Rostros en la Actualidad}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Trabajos Relacionados}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Combinaci\363n de Redes Neuronales Convolucionales Previamente Entrenadas}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Modelo IE-CNN}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Planteamiento del Problema}{}% 7
+\BOOKMARK [1][-]{section.4}{Propuesta}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Descripci\363n de la propuesta}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Concatenaci\363n de Diferentes Representaciones \(CC\)}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Utilizaci\363n de M\351todos de Conjunto de Agrupamiento \(MVEC\)}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{Utilizaci\363n de Agrupamiento de M\372ltiples Vistas \(MVC\)}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.5}{Medici\363n}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Resultados}{}% 14
+\BOOKMARK [1][-]{section.6}{Conclusiones}{}% 15
+\BOOKMARK [1][-]{section.7}{Futuras Aportaciones}{}% 16
+\BOOKMARK [1][-]{section*.1}{References}{}% 17
