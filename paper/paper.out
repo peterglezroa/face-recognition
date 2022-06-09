@@ -10,8 +10,10 @@
 \BOOKMARK [2][-]{subsection.4.2}{Concatenaci\363n de Diferentes Representaciones \(CC\)}{section.4}% 10
 \BOOKMARK [2][-]{subsection.4.3}{Utilizaci\363n de M\351todos de Consenso de Agrupamiento \(MVEC\)}{section.4}% 11
 \BOOKMARK [2][-]{subsection.4.4}{Utilizaci\363n de Agrupamiento de M\372ltiples Vistas \(MVC\)}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.5}{Medici\363n}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.5}{Medici\363n y Datasets}{section.4}% 13
 \BOOKMARK [1][-]{section.5}{Resultados}{}% 14
-\BOOKMARK [1][-]{section.6}{Conclusiones}{}% 15
-\BOOKMARK [1][-]{section.7}{Futuras Aportaciones}{}% 16
-\BOOKMARK [1][-]{section*.1}{References}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{Resultados entre los diferentes algoritmos de agrupaci\363n}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Resultados de desempe\361o en agrupaci\363n de acuerdo al dataset}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{Conclusiones}{}% 17
+\BOOKMARK [1][-]{section.7}{Futuras Aportaciones}{}% 18
+\BOOKMARK [1][-]{section*.1}{References}{}% 19

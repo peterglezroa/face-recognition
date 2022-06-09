@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex paper"] 1654710792 "paper.aux" "paper.bbl" "paper" 1654710793
+["bibtex paper"] 1654748228 "paper.aux" "paper.bbl" "paper" 1654748315
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/ieeetr.bst" 1292289607 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "paper.aux" 1654710793 4425 3baf5bc1ad817c3592bb4206cdefd57c "pdflatex"
-  "refs.bib" 1654709532 25026 92a7febe420630da5093df81161789a6 ""
+  "paper.aux" 1654748315 6098 f95e5fc99d3b7b5c0673e3b7a80863cf "pdflatex"
+  "refs.bib" 1654747345 28359 d471bed3c54803abf466bd6c0f9874be ""
   (generated)
   "paper.bbl"
   "paper.blg"
-["pdflatex"] 1654710792 "paper.tex" "paper.pdf" "paper" 1654710793
+["pdflatex"] 1654748314 "paper.tex" "paper.pdf" "paper" 1654748315
   "/etc/texmf/web2c/texmf.cnf" 1645047681 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -86,15 +86,19 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1648151842 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1648151876 8256174 025e2e33de4cf6272b896ad9ce406461 ""
-  "figs/cc.png" 1654704851 18656 e8e18d06b19775ae5ba42f8018200611 ""
+  "figs/cc.png" 1654728771 54032 101dffa9d6f192a3c841a1d25d1b3b93 ""
+  "figs/celeba_vgg.png" 1654744136 24297 59baf806d51032296fd4b13552478127 ""
+  "figs/cluster_comparison.png" 1654744135 18806 3cb0fbb8692f7b57a3cd7f17b3af02b4 ""
+  "figs/dataset_comparison.png" 1654744136 39077 21370b1aba445a7d105ec53f786f9c2a ""
   "figs/mvec.png" 1654709908 41721 bc8206fe4dfab101768481f7f5589669 ""
+  "figs/singles.png" 1654744137 38677 916b96bf5e94cce028a5637a562331f4 ""
   "ieeeconf.cls" 1648149746 197573 0f3e3448afe589ee826b9e8b13c8f08f ""
-  "paper.aux" 1654710793 4425 3baf5bc1ad817c3592bb4206cdefd57c "pdflatex"
-  "paper.bbl" 1654710792 2633 b521283edd7ba11d6ec17b89f6647398 "bibtex paper"
-  "paper.out" 1654710793 1249 7fae69a55128ca879efa1e4fd7b722b0 "pdflatex"
-  "paper.tex" 1654710789 18467 91498ee3d6978f1176928abc2a5b474d ""
+  "paper.aux" 1654748315 6098 f95e5fc99d3b7b5c0673e3b7a80863cf "pdflatex"
+  "paper.bbl" 1654748228 3816 7703ef373a7440d20caeb72e96350ebe "bibtex paper"
+  "paper.out" 1654748315 1484 786b5316645c2599e38aa51e1d9ebb43 "pdflatex"
+  "paper.tex" 1654748313 32653 1844962f5a370e7c19b33d1b1daced6e ""
   (generated)
-  "paper.out"
   "paper.pdf"
   "paper.log"
   "paper.aux"
+  "paper.out"

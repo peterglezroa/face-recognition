@@ -8,45 +8,45 @@ Warning--entry type for "Birchall2017" isn't style-file defined
 Warning--entry type for "Sano_ClusterEnsembles_2021" isn't style-file defined
 --line 218 of file refs.bib
 Warning--empty journal in NMI
-You've used 14 entries,
+You've used 19 entries,
             1876 wiz_defined-function locations,
-            585 strings with 5891 characters,
-and the built_in function-call counts, 4111 in all, are:
-= -- 409
-> -- 152
-< -- 0
-+ -- 56
-- -- 42
-* -- 294
-:= -- 568
-add.period$ -- 14
-call.type$ -- 14
-change.case$ -- 14
+            621 strings with 7053 characters,
+and the built_in function-call counts, 5397 in all, are:
+= -- 510
+> -- 243
+< -- 1
++ -- 88
+- -- 69
+* -- 408
+:= -- 775
+add.period$ -- 19
+call.type$ -- 19
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 202
-empty$ -- 367
-format.name$ -- 42
-if$ -- 1023
+cite$ -- 20
+duplicate$ -- 262
+empty$ -- 475
+format.name$ -- 69
+if$ -- 1318
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 12
-newline$ -- 45
-num.names$ -- 14
-pop$ -- 36
+int.to.str$ -- 19
+missing$ -- 16
+newline$ -- 60
+num.names$ -- 19
+pop$ -- 52
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 182
+skip$ -- 212
 stack$ -- 0
-substring$ -- 306
-swap$ -- 105
-text.length$ -- 0
+substring$ -- 354
+swap$ -- 124
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 35
-width$ -- 16
-write$ -- 132
+while$ -- 44
+width$ -- 21
+write$ -- 178
 (There were 3 warnings)

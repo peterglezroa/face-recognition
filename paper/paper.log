@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.3.24)  8 JUN 2022 12:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.3.24)  8 JUN 2022 23:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -347,18 +347,42 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 ]
-<./figs/cc.png, id=84, 1295.84125pt x 151.56625pt>
+<./figs/cc.png, id=92, 1275.76625pt x 342.27875pt>
 File: ./figs/cc.png Graphic file (type png)
 <use ./figs/cc.png>
-Package pdftex.def Info: ./figs/cc.png  used on input line 207.
-(pdftex.def)             Requested size: 227.62204pt x 26.62161pt.
- [2 <./figs/cc.png>]
-<./figs/mvec.png, id=92, 811.03pt x 362.35374pt>
+Package pdftex.def Info: ./figs/cc.png  used on input line 215.
+(pdftex.def)             Requested size: 227.62204pt x 61.06956pt.
+ [2]
+<./figs/mvec.png, id=98, 811.03pt x 362.35374pt>
 File: ./figs/mvec.png Graphic file (type png)
 <use ./figs/mvec.png>
-Package pdftex.def Info: ./figs/mvec.png  used on input line 229.
+Package pdftex.def Info: ./figs/mvec.png  used on input line 239.
 (pdftex.def)             Requested size: 227.62204pt x 101.6961pt.
- (./paper.bbl)
+ [3 <./figs/cc.png> <./figs/mvec.png>]
+<./figs/cluster_comparison.png, id=109, 462.528pt x 346.896pt>
+File: ./figs/cluster_comparison.png Graphic file (type png)
+<use ./figs/cluster_comparison.png>
+Package pdftex.def Info: ./figs/cluster_comparison.png  used on input line 360.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./figs/singles.png, id=110, 722.7pt x 722.7pt>
+File: ./figs/singles.png Graphic file (type png)
+<use ./figs/singles.png>
+Package pdftex.def Info: ./figs/singles.png  used on input line 395.
+(pdftex.def)             Requested size: 227.62204pt x 227.61862pt.
+<./figs/dataset_comparison.png, id=111, 722.7pt x 722.7pt>
+File: ./figs/dataset_comparison.png Graphic file (type png)
+<use ./figs/dataset_comparison.png>
+Package pdftex.def Info: ./figs/dataset_comparison.png  used on input line 402.
+(pdftex.def)             Requested size: 227.62204pt x 227.61862pt.
+<./figs/celeba_vgg.png, id=112, 722.7pt x 361.35pt>
+File: ./figs/celeba_vgg.png Graphic file (type png)
+<use ./figs/celeba_vgg.png>
+Package pdftex.def Info: ./figs/celeba_vgg.png  used on input line 423.
+(pdftex.def)             Requested size: 227.62204pt x 113.80931pt.
+ [4 <./figs/cluster_comparison.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./figs/singles.png> <./figs/dataset_comparison.png> <./figs/celeba_vgg.png>] (./paper.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -370,32 +394,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 287.
-[3 <./figs/mvec.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 287.
- (./paper.aux
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 495.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 495.
+[6
+
+] (./paper.aux
 LaTeX Info: Redefining \. on input line 32.
 LaTeX Info: Redefining \% on input line 32.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 287.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 287.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 495.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 495.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 7FAE69A55128CA879EFA1E4FD7B722B0;1249.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 287.
+(rerunfilecheck)             Checksum: 786B5316645C2599E38AA51E1D9EBB43;1484.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 495.
  ) 
 Here is how much of TeX's memory you used:
- 8039 strings out of 481239
- 125851 string characters out of 5920377
- 438117 words of memory out of 5000000
- 23139 multiletter control sequences out of 15000+600000
- 563977 words of font info for 74 fonts, out of 8000000 for 9000
+ 8094 strings out of 481239
+ 126805 string characters out of 5920377
+ 439489 words of memory out of 5000000
+ 23171 multiletter control sequences out of 15000+600000
+ 565073 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,9n,44p,314b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,9n,44p,314b,443s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (3 pages, 135844 bytes).
+Output written on paper.pdf (6 pages, 264552 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 147 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 197 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 183 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -30,27 +30,51 @@ def main(args):
     df = base_df.melt(id_vars=id_vars, value_vars=val_vars)
     df["cluster alg"] = df["variable"].str.split(' ').str[-1]
     df["multiview"] = df["variable"].str.split(' ').str[0]
+    df["vgg"] = df["variable"].map(lambda x: True if "vgg" in x else False)
+    df["resnet"] = df["variable"].map(lambda x: True if "vgg" in x else False)
+    df["senet"] = df["variable"].map(lambda x: True if "vgg" in x else False)
+    df = df.rename(columns={"value": "NMI", "variable": "Modelos"})
 
     # Remove rows with empty values
-    df.dropna(subset=["value"], inplace=True)
+    df.dropna(subset=["NMI"], inplace=True)
 
     if args.folder is not None:
         df.to_csv(os.path.join(args.folder, "melted_df.csv"))
 
     # Melt to analyse agglomerative vs kmeans
-    ax = sns.boxplot(data=df, x="cluster alg", y="value")
+    ax = sns.boxplot(data=df, x="cluster alg", y="NMI", showfliers=False)
     if args.folder is not None:
         ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-        ax.figure.savefig(os.path.join(args.folder, "cluster_alg_boxplot.png"))
+        ax.figure.savefig(os.path.join(args.folder, "cluster_comparison.png"))
 
-    # MVC clustering algorithms comparison
-    ax = sns.catplot(kind="box", data=df[df["multiview"] != "MVC"], x="multiview",
-        y="value", col="Dataset", col_wrap=2)
+    # Stop analysing multiview
+    df = df[df["multiview"] != "MVC"]
+
+    # Dataset comparison
+    ax = sns.catplot(kind="box", data=df, x="multiview",
+        y="NMI", col="Dataset", col_wrap=2, showfliers=False)
+    ax.set_axis_labels("Acercamientos Propuestos en esta Investigación")
     if args.folder is not None:
 #        ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-        ax.fig.savefig(os.path.join(args.folder, "multiview_boxplot.png"))
+        ax.fig.savefig(os.path.join(args.folder, "dataset_comparison.png"))
+
+    # Dataset comparison in celeba dataset
+    ax = sns.catplot(kind="box", data=df[(df["Dataset"]=="celeba") & (df["multiview"]!="MVEC")],
+        x="multiview", y="NMI", col="vgg", col_wrap=2, showfliers=False)
+    ax.set_axis_labels("Acercamientos Propuestos en esta Investigación")
+    if args.folder is not None:
+#        ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+        ax.fig.savefig(os.path.join(args.folder, "celeba_vgg.png"))
     
-    # Melt to analyse single, cc, mvc
+    # Model score per dataset without proyect
+    df["Modelos"] = df["Modelos"].str.split(' ').str[1]
+    ax = sns.catplot(kind="box", data=df[df["multiview"]=="S"],
+        x="Modelos", y="NMI", col="Dataset", col_wrap=2, showfliers=False)
+    ax.set_axis_labels("Acercamientos Propuestos en esta Investigación")
+    if args.folder is not None:
+#        ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+        ax.fig.savefig(os.path.join(args.folder, "singles.png"))
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

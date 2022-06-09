@@ -44,7 +44,7 @@ José Antonio Cantoral Ceballos}
         nivel de abstracción porque existe un alto grado de similitud estructural entre los
         diferentes rostros. De esta manera, se requiere de la utilización de técnicas de
         \textit{deep learning}, cómo las \textit{redes neuronales convolucionales} (\textit{CNN}
-        por sus siglas en inglés) para la extración de características o \textit{features} que 
+        por sus siglas en inglés) para la extracción de características o \textit{features} que 
         proporciona una imagen.  Estas técnicas requieren de un modelo sumamente complejo y una
         base de datos de gran tamaño para un entrenamiento exitoso que desempeñe correctamente en
         diferentes situación de iluminación, calidad de la imagen, perfil de la cara, entre otros.
@@ -53,7 +53,7 @@ José Antonio Cantoral Ceballos}
         Por lo que se propone utilizar una combinación de diferentes \textit{CNN}'s previamente
         entrenadas con diferentes arquitecturas y bases de datos.
         Se espera que las diferentes perspectivas o características extraidas por cada modelo
-        se complementen entre sí para tener una representación más completa (aunque
+        sean capaces de complementarse entre sí para tener una representación más completa (aunque
         más compleja) del rostro a analizar sin la necesidad de entrenar un modelo de complejidad
         tan grande como la previamente mencionada. Finalmente se utilizará esta representación
         más compleja para determinar los grupos de imágenes de acuerdo a las diferentes personas
@@ -73,10 +73,10 @@ José Antonio Cantoral Ceballos}
 
     % CNN
     Métodos de \textit{deep learning}, cómo las \textit{redes neuronales convolucionales},
-    utilizan una casca de múltiples capas de unidades de procesamiento para extraer
+    utilizan una cascada de múltiples capas de unidades de procesamiento para extraer
     características específicas de las imágenes. Estas aprenden diferentes niveles de
     representación con cada capa de convolución que corresponden a los diferentes niveles
-    de abstracción. Donde las primeras capas son capaces de reconocen y de detectar
+    de abstracción. Donde las primeras capas son capaces de reconocer y de detectar
     atributos de bajo nivel, similares a los modelos Gabor y SIFT (diseñados hace décadas);
     mientras que las capas más externas aprenden un nivel de abstracción más alto.
     Gracias a la variedad de niveles y filtros utilizados, los modelos de
@@ -96,7 +96,7 @@ José Antonio Cantoral Ceballos}
         \item \textbf{Alineación del rostro}: Como segundo paso en este proceso, se alinea
             el rostro de acuerdo a coordenadas canónicas. \cite{Wang2021} Se han presentado
             varias propuestas, de las cuales las \textit{CNN} han obtenido buenos resultados.
-            Para el proposito de este proyecto, se utilizará la propuesta de Zhang \cite{MTCNN}.
+            Para el propósito de este proyecto, se utilizará la propuesta de Zhang \cite{MTCNN}.
             La cual utiliza una \textit{CNN} para la detección y la alineación de los rostros
             en la misma secuencia.
 
@@ -150,15 +150,15 @@ José Antonio Cantoral Ceballos}
     el desarrollo de modelos de reconocimiento: siempre se utiliza la parte interna del rostro
     para el entrenamiento de los modelos. Lo cual no se apega completamente a cómo los humanos
     procesamos un nuevo rostro. Cuando es difícil determinar la comparación entre individuos,
-    incrementamos nuestro enfoque en características específicas de la cara para disernir entre los
-    dos diferentes rostros. \cite{Young1987} \cite{Andrews2010} Por lo que Song propone un modelo
+    incrementamos nuestro enfoque en características específicas de la cara para discernir entre los
+    dos rostros diferentes. \cite{Young1987} \cite{Andrews2010} Por lo que Song propone un modelo
     de \textit{CNN} que utiliza diferentes perspectivas enfocadas en partes estratégicas del rostro
     para obtener una representación mejorada. La cual obtuvo una mejora en los resultados de
     alrededor del 5\%. \cite{IECNN}
 
     \section{Planteamiento del Problema}
     % Diferentes situaciones afectan la fiabilidad de los modelos cnn
-    Reiterando la problematica con la utilización de \textit{CNN} previamente mencionada
+    Reiterando la problemática con la utilización de \textit{CNN} previamente mencionada
     la extracción de las características únicas de una cara para el reconocimiento facial
     es un reto no trivial por múltiples factores. Uno de estos es la posición del rostro,
     ya que es posible ocultar atributos clave que conllevan a una recolección incompleta
@@ -172,9 +172,9 @@ José Antonio Cantoral Ceballos}
     correctamente en cualquier tipo de contexto requiere de una gran cantidad de recursos de
     \textit{hardware} y de una base de datos que incluya varias representaciones por cada uno
     de estos contextos. Incluso corporaciones gigantes han tenido problemas para resolver esta
-    problematica en todos los casos posibles. Podemos tomar como ejemplo la situación en la que
+    problemática en todos los casos posibles. Podemos tomar como ejemplo la situación en la que
     se encontró Apple, cuando su reconocimiento facial en sus dispositivos \textit{iphone} no
-    era capaz de disernir correctamente entre individuos del país chino. \cite{Birchall2017}
+    era capaz de discernir correctamente entre individuos del país chino. \cite{Birchall2017}
 
 
     \section{Propuesta}
@@ -187,11 +187,19 @@ José Antonio Cantoral Ceballos}
     en el tiempo de ejecución del programa, pero se busca resultados constantes durante contextos
     diferentes provenientes de bases de datos públicas.
 
-    Así mismo, para acelerar el proceso de comparación entre imágenes se considera utilizar
-    algoritmos de agrupamiento (\textit{clustering}) para realizar un mapa de las diferentes
-    representaciones para cada rostro. De esta manera no es necesario comparar el rostro
-    desconocido con cada una de las imágenes identificadas; sólo se predicirá el \textit{cluster} a
-    cual pertenece.
+    Considerando que para determinar si un rostro pertenece a la misma persona, es decir se
+    calcula la distancia entre las representaciones numéricas y se compara en contra de un
+    threshold previamente determinado, se propone utilizar algoritmos de agrupamiento
+    (\textit{clustering}) para realizar un mapa de las diferentes representaciones para cada
+    rostro. De esta manera no es necesario comparar el rostro desconocido con cada una de las
+    imágenes identificadas; sólo se predicirá el \textit{cluster} a cual pertenece y que se
+    mantenga dentro de una distancia definida. En caso de que se encuentre fuera de la distancia
+    definida se considera a la imágen cómo un nuevo individuo a registrar.
+
+    Para el desarrollo de esta investigación, se utilizó la librería de Python
+    \textit{Keras-VGGFace}, la cual contiene modelos previamente entrenados con las arquitecturas
+    \textit{VGG16}, \textit{RESNET50}, \textit{SENET50}. Aunque hay más modelos públicos, se
+    decidió realizar las pruebas con estos tres modelos.
 
     \subsection{Concatenación de Diferentes Representaciones (CC)}
     El acercamiento de concatenación consiste en, cómo su nombre lo dice, concatenar las
@@ -209,6 +217,8 @@ José Antonio Cantoral Ceballos}
         \caption{Representación visual del acercamiento de concatenación.}
     \end{figure}
 
+    % Por qué CC
+
     \subsection{Utilización de Métodos de Consenso de Agrupamiento (MVEC)}
     Existen diferentes algoritmos e implementaciones para el agrupamiento de información. Aunque
     haya una gran variedad de estos algoritmos, muchos de estos encuentran soluciones apropiadas
@@ -216,7 +226,7 @@ José Antonio Cantoral Ceballos}
     la pequeña posibilidad de que algunos sí llegan a este último (cómo por ejemplo: el algoritmo
     de \textit{k-means}. Ya que llegar a una solución óptima global es un poco aleatoria por la
     dependencia de la inicialización y distribución de las diferentes entradas, escoger un
-    algoritmo de agrupación apto para la información persentada puede ser una tarea difícil. Para
+    algoritmo de agrupación apto para la información presentada puede ser una tarea difícil. Para
     solucionar este problema, diferentes investigadores introdujeron el concepto de métodos de
     conjuntos para agrupamientos (\textit{Cluster Ensembles - CE} en inglés), ó también conocidos
     como métodos de consenso de agrupamiento (\textit{Consensus Clustering} en inglés). Los
@@ -231,6 +241,8 @@ José Antonio Cantoral Ceballos}
         \caption{Representación visual del acercamiento de consenso.}
     \end{figure}
 
+    % Por qué MVEC
+
     Para el enfoque de este proyecto, utilizaremos la librería de Python proporcionada por Sano
     Takehiro \cite{Sano_ClusterEnsembles_2021}; con el algoritmo de \textit{Hybrid Bipartite Graph
     Formulation}. \cite{Fern2004}
@@ -241,43 +253,239 @@ José Antonio Cantoral Ceballos}
     entre sí, es decir son perspectivas que se complementan entre ellas para una representación
     más compleja del objeto observado. Por lo cual, ha surgido una tendencia a experimentar con
     algoritmos que puedan utilizar las diferentes dimensiones de cada vista para hacer predicciones
-    más certeras.  En el ámbito de agrupamiento de información de múltiples vistas, ha incrementado
-    en popularidad el algoritmo de Agrupación de vistas múltiples; \textit{Multi-View Clustering
-    (MVC)} en inglés.
+    más certeras.  Gracias a la necesidad de identificar diferentes objetos en una gran cantidad de
+    información y vistas, ha incrementado en popularidad los Algoritmos de Agrupación de Vistas
+    múltiples; \textit{Multi-View Clustering (MVC)} en inglés.
 
-    Esta exhibición de propiedades heterógenas contiene un potencial de contener posibles
-    conecciones entre ellas, las cuales pueden ser explotadas para desenmascarar características
-    únicas de cada entrada de información. La idea principal de utilizar \textit{MVC} es
+    Cómo se mencionó previamente, cada vista puede considerarse como un mundo diferente afectado
+    por diferentes variables. Esta exhibición de propiedades heterogéneas contiene un potencial de
+    contener posibles conecciones entre ellas, las cuales pueden ser explotadas para desenmascarar
+    características únicas de cada objeto. La idea principal de utilizar \textit{MVC} es
     particionar objetos de acuerdo a diferente criteria relacionada con estas conecciones de sus
-    diferentes vistas. \cite{Yang2018}
-    % Que es mvc
-    % Por que mvc
+    diferentes vistas, ajustando algoritmos comunes y conocidos (cómo k-means) para un enfoque de
+    mayor complejidad. \cite{Yang2018}
 
-    \subsection{Medición}
+    Las pruebas realizadas en esta investigación utilizarán la librería de Python \textit{MVLearn}.
+    \cite{MVlearn} La cual contiene mayor variedad de algoritmos de múltiples vistas para utilizar.
+    Cabe mencionar que por las restricciones de este proyecto, sólo se utilizó el algoritmo de
+    \textit{Multi-view K-Means Clustering}.
+
+    % Cómo se relaciona
+
+    \subsection{Medición y Datasets}
     % NMI
     Para evaluar el desempeño de este modelo de combinación se dividirá en dos etapas dicha
     evaluación:
     \begin{enumerate}
         \item Se dará la tarea de agrupar las imágenes de un número conocido y variable de
             personas. La composición de estos grupos será evaluada con la métrica
-            \textit{Normalized Mutual Info (NMI)} \cite{NMI}.
-        \item De un mapeo previamente realizado de un número conocido de personas, se agregarán
-            más imágenes de personas incluidas en dicho agrupamiento y de otras no incluidas. Por
-            cada imágen se evaluará si predijo correctamente la persona a la que pertenece o si
-            es una persona nueva. Denotando el porcentaje de casos de falsos positivos,
-            ya que es una métrica importante en los sistemas de seguridad biométricos.
+            \textit{Normalized Mutual Info (NMI)} \cite{NMI}. Es importante esta puntuación porque
+            al evaluar la facilidad para el algoritmo de determinar los grupos de acuerdo a las
+            diferentes representaciones significa que estas se encuentran separadas a comparación
+            de representaciones de otros rostros y también se encuentran cercanas a las
+            representaciones de un mismo individuo por lo que se cumple nuestra hipótesis de una
+            representación más completa de las características únicas del rostro.
+%        \item De un mapeo previamente realizado de un número conocido de personas, se agregarán
+%            más imágenes de personas incluidas en dicho agrupamiento y de otras no incluidas. Por
+%            cada imágen se evaluará si predijo correctamente la persona a la que pertenece o si
+%            es una persona nueva. Denotando el porcentaje de casos de falsos positivos,
+%            ya que es una métrica importante en los sistemas de seguridad biométricos.
         \item La diferencia de tiempo para realizar el agrupamiento entre cada uno de los
-            acercamientos, así como también el tiempo que conlleva predecir una nueva imágen.
+            acercamientos.
     \end{enumerate}
 
+    % Datasets
+    Es importante que estas evaluaciones sean hechas con la mayor cantidad posible de imágenes que
+    representen los diferentes contextos que afectan a este tipo de autenticación biométrico. Por
+    lo que se decidió utilizar cuatro diferentes \textit{datasets} públicas:
+    \begin{itemize}
+        \item \textbf{Yale Face Dataset}: Esta base de datos pública es una de las más comunes y
+            utilizadas para investigación y validación de modelos de detección y reconocimiento de
+            datos. Esta consiste de un total de 165 imágenes de 15 individuos. Este dataset se
+            utilizó para realizar pruebas sencillas durante el desarrollo del modelo propuesto.
+%        \item \textbf{The Extended Yale Face Dataset B}\cite{YaleDataset}: Este \textit{dataset}
+%            consiste en 16,128 imágenes en escala de gris de 28 individuos. Cada uno tiene 9
+%            posiciones de rostro, y 64 situaciones diferentes de iluminación. Este dataset se
+%            utilizará para experimentar los cambios de iluminación y posición de rostro.
+        \item \textbf{CelebA Dataset}\cite{CELEBA}: Consiste en 10,177 individuos con un total de
+            202,599 imágenes de rostros. Se recomienda este dataset porque tiene al menos 2 o más
+            imágenes por cada una de las personas; lo cual es excelente para probar que las
+            representaciones de un mismo individuo no tengan mucha distancia entre ellas.
+        \item \textbf{Labeled Faces in the Wild (LFW)}\cite{LFW}: Al igual que la base de datos de
+            Yale, \textit{LFW} es muy utilizado en investigaciones. Este \textit{dataset} cuenta
+            con 13,233 imágenes de 5,749 individuos. La desventaja de este dataset es que sólo
+            1,680 individuos tienen dos o más imágenes.
+        \item \textbf{Masked Labeled Faces in the Wild (MLFW)}\cite{MLFW}: Consiste en modificar el
+            \textit{dataset LFW}, agregando una imagen de un cubrebocas para cada imágen. Por lo
+            que se buscará aprovechar este dataset para probar la consistencia del modelo frente
+            a situaciones que cubran la parte inferior del rostro.
+    \end{itemize}
+
     \section{Resultados}
+    Al analizar los grandes tamaños de cada \textit{dataset}, se observó que no es viable realizar
+    análisis sobre todas las imágenes de cada uno. Esto es porque buscamos comprobar nuestra
+    hipótesis sobre que la utilización de diferentes modelos \textit{CNN} es capaz de construir una
+    representación más completa de una imágen. En otras palabras, buscamos que las representaciones
+    de cada rostros sean sencillas de identificar y agrupar. No buscamos determinar si es posible
+    agrupar un grupo de imágenes tan grande. Para solucionar el problema que ocasiona utilizar
+    tanta memoria, optamos por realizar múltiples pruebas de al menos 50 individuos por
+    \textit{dataset} (con la excepción del \textit{Yale dataset} porque cuenta con 15 individuos.
+
+    Una vez específicado el tamaño de las pruebas, organizamos la experimentación de este proyecto
+    en dos pasos, cada uno con un objetivo diferente:
+
+    \subsection{Resultados entre los diferentes algoritmos de agrupación}
+    Cómo primer paso en la implementación de esta investigación se buscó un algoritmo de agrupación
+    que fuera capaz de obtener resultados constantes. Por lo que se realizaron 100 pruebas de
+    alrededor de 50 personas por \textit{dataset} para evaluar tres tipos de algoritmos de
+    agrupación.
+
+    \begin{itemize}
+        \item \textbf{\textit{k-means}}: Se escogió este algoritmo por la idea de que si se
+            encuentra una representación general de un rostro (el \textit{centroide}) es más
+            sencillo encontrar representación cercanas a esta representación.
+        \item \textbf{\textit{agglomerative}}: Como segunda opción se experimentó con
+            \textit{agglomerative clustering} por ser un algoritmo de agrupación jerárquica. Por lo
+            que se tendrá un resultado determinístico.
+        \item \textbf{\textit{multiview k-means}}: Este es el algoritmo elegido para evaluar el
+            acercamiento de Agrupamiento de Múltiples Vistas.
+    \end{itemize}
+
+    Ya que se espera la necesidad de trabajar con una gran cantidad de información en muy poco
+    tiempo, también se aprovecharon estas pruebas para determinar si al utilizar un reductor de
+    dimensionalidad se ve afectado el puntaje de los grupos obtenidos.
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=8cm]{./figs/cluster_comparison.png}
+        \label{fig: Results Cluster}
+        \caption{Análisis de resultados por algoritmo de agrupamiento.}
+    \end{figure}
+
+    La figura 3 nos ayuda a visualizar la variación de los resultados preliminar
+    es que se obtuvieron para resolver el primer objetivo. Con esta información podemos hacer
+    las siguientes reflexiones:
+
+    \begin{enumerate}
+        \item El acercamiento de Agrupamiento de Múltiples Vistas no es viable porque tiende a
+            tener los mismos resultados a cuando se realiza agrupamientos de forma aleatoria.
+            Al analizar los archivos de salida, se puede ver que por la complejidad del algoritmo
+            en todos los casos converge a un mínimo local que no es óptimo porque sólo se logra
+            encontrar una menor cantidad de grupos antes de converger.
+        \item Existe poca diferencia entre los resultados de los algoritmos \textit{k-means} y
+            \textit{agglomerative}. Por lo que se decidió optar por utilizar el algoritmo de
+            \textit{k-means}, ya que este almacena un los \textit{centroides} que se utilizarían
+            en el modelo para determinar si una nueva imagen es parte del grupo de representaciones
+            del mismo rostro.
+        \item Finalmente utilizar un reductor de dimensionalidad, \textit{PCA} en este caso, no
+            altera la precisión al agrupar las imágenes. Por lo tanto, se utilizará este reductor
+            de dimensiones para las siguientes pruebas que contienen un número mucho mayor de
+            imágenes.
+    \end{enumerate}
     % Fracaso mvc (Comparación de modelos de agrupamiento)
     % Resultados y consistencia de CC
 
+    \subsection{Resultados de desempeño en agrupación de acuerdo al dataset}
+    Se determinó que nuestro siguiente objetivo era medir la puntuación \textit{NMI} para la
+    agrupación de las imágenes en pruebas de más de 100 individuos. Haciendo énfasis en las
+    diferentes características de cada dataset para realizar reflexiones de estas.
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=8cm]{./figs/singles.png}
+        \label{fig: Results Single}
+        \caption{Análisis de resultados de los modelos sin combinación.}
+    \end{figure}
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=8cm]{./figs/dataset_comparison.png}
+        \label{fig: Results Dataset}
+        \caption{Análisis de resultados por \textit{dataset}.}
+    \end{figure}
+
+    Al reflexionar sobre los diferentes resultados de cada dataset de acuerdo a la
+    figura 5, reflexionamos sobre los siguientes puntos:
+    \begin{enumerate}
+        \item \textbf{Dataset CelebA}: A primera vista los resultados que se obtuvieron en todos
+            los tipos de acercamiento dejaron mucho que desear. Aunque en la
+            figura 6, en la cual
+            se hace una comparación de los resultados a cuando se utiliza la arquitectura 
+            \textit{VGG16}, podemos ver que se mantiene el nivel de precisión de este modelo. Al
+            tener un puntaje promedio de 0.82 de forma individual, el modelo \textit{VGG16}
+            proporciona las características más definitivas de los rostros en este dataset. En
+            contraste, las otras dos arquitecturas - \textit{RESNET} y \textit{SENET} - no
+            tienen una perspectiva lo suficientemente clara para determinar con precisión los
+            grupos. Al utilizar el algoritmo de concatenación, las características de la mejor
+            red neuronal son compartidas para que se obtenga un mejor resultado.
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=8cm]{./figs/celeba_vgg.png}
+                \label{fig: Results Celeba with VGG}
+                \caption{Análisis de resultados en \textit{celeba} cuando se utiliza VGG.}
+            \end{figure}
+        \item \textbf{Dataset MLFW}: Al analisar la figura 4, nos podemos percatar que es el único
+            dataset en el que la arquitectura \textit{VGG16} no obtuvo los mayores resultados.
+            Este dataset oculta la parte inferior del rostro, por lo que se puede suponer que en
+            esta zona hay características de las que depende esta arquitectura para discernir entre
+            rostros.  Aunque en la figura 5, podemos observar que se obtienen mejores resultados
+            gracias a que las otras arquitecturas tienen una perspectiva que complementa a las
+            predicciones de esta.
+    \end{enumerate}
+
+%    \subsection{Resultados de desempeño en falsos positivos}
+%    \begin{figure}[ht]
+%        \centering
+%        \includegraphics[width=8cm]{./figs/dataset_comparison.png}
+%        \label{fig: Results FP}
+%        \caption{Análisis de resultados de acuerdo a los falsos positivos.}
+%    \end{figure}
+
+%    \subsection{Resultados en medición de tiempo}
+% Faltó tiempo para una nueva foto individual
+%    \begin{figure}[ht]
+%        \centering
+%        \includegraphics[width=8cm]{./figs/dataset_comparison.png}
+%        \label{fig: Results Map Time}
+%        \caption{Análisis de resultados de acuerdo al tiempo de agrupación.}
+%    \end{figure}
+
     \section{Conclusiones}
-    % Maybe worth it?
+    En el estado del arte de reconocimiento de rostros se ha popularizado la implementación de
+    \textit{CNN} para la extracción de las características únicas que identifican a un individuo.
+    Esta técnica de \textit{deep learning} se ve afectada directamente por las decisiones
+    arbitrarias del programador al realizar el diseño de esta, por lo que hay una gran variación
+    de resultados (incluso con las mismas arquitecturas) en diferentes casos de prueba. En este
+    artículo se propone la idea de aprovechar las diferentes perspectivas que tienen cada uno de
+    los \textit{modelos} para tener una perspectiva más completa.
+
+    Con los resultados y sus reflexiones previamente mencionadas, podemos concluir que en caso de
+    necesitar un modelo que tenga la flexibilidad para la detección de rostros en una gran
+    variedad de contextos es posible utilizar una combinación de redes neuronales previamente
+    entrenadas. Aunque existe la posibilidad de que se seleccione una \textit{CNN} con entrenada
+    con un dataset parecido al contexto que se somete y que puede incluso tener el mejor resultado
+    a comparación de otras redes, también existe la posibilidad de elegir una red neuronal que
+    no es apta para la situación que se presenta. Por lo que al sacrificar tiempo para dedicarlo a
+    la ejecución de los diferentes modelos, podemos combinar las diferentes perspectivas para
+    obtener un resultado más constante.
 
     \section{Futuras Aportaciones}
+    En este artículo se realizaron pequeños pero múltiples experimentos para demostrar que es
+    posible combinar diferentes perspectivas en busca de una visión más amplia. Se obtuvieron
+    resultados positivos, incluso cuando sólo se utilizaron tres arquitecturas - \textit{VGG16},
+    \textit{RESNET50} y \textit{SENET50}. Existe la posibilidad de que se puedan utilizar
+    otras arquitecturas diferentes y encontrar una mayor complementación entre ellas.
+
+    Así mismo, cabe mencionar que se experimentó con una pequeña cantidad de algoritmos de
+    agrupamiento; de los cuales existen una mayor variedad (incluso cuando se trata de
+    agrupamiento de múltiples vistas). En un artículo relacionado, Guerín obtuvo resultados
+    muy altos en \textit{datasets} selectas con el algoritmo de \textit{deep clustering} llamado
+    \textit{Joint Unsupervised Learning of Deep Representations and Image Clusters} \cite{JULE};
+    con el cual se puede expandir esta experimentación.
+
+    Finalmente, se propone experimentar más sobre el comportamiento de estas combinaciones de
+    modelos frente a imágenes nuevas después de haber realizado el agrupamiento inicial. Esto
+    con el objetivo de evaluar a un nivel más profundo las capacidades de autenticación biométrica.
     % Utilizar más modelos como Inception
     % Deep Learning Clustering JULE
     % Entrenar modelos tapando partes estratégicas de la cara
