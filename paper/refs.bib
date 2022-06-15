@@ -311,3 +311,141 @@ generalize well when transferred to other tasks.},
    year = {2016},
 }
 
+
+@article{Facenet,
+   abstract = {Despite significant recent advances in the field of face recognition, implementing face verification and recognition efficiently at scale presents serious challenges to current approaches. In this paper we present a system, called FaceNet, that directly learns a mapping from face images to a compact Euclidean space where distances directly correspond to a measure of face similarity. Once this space has been produced, tasks such as face recognition, verification and clustering can be easily implemented using standard techniques with FaceNet embeddings as feature vectors. Our method uses a deep convolutional network trained to directly optimize the embedding itself, rather than an intermediate bottleneck layer as in previous deep learning approaches. To train, we use triplets of roughly aligned matching / non-matching face patches generated using a novel online triplet mining method. The benefit of our approach is much greater representational efficiency: we achieve state-of-the-art face recognition performance using only 128-bytes per face. On the widely used Labeled Faces in the Wild (LFW) dataset, our system achieves a new record accuracy of 99.63%. On YouTube Faces DB it achieves 95.12%. Our system cuts the error rate in comparison to the best published result by 30% on both datasets. We also introduce the concept of harmonic embeddings, and a harmonic triplet loss, which describe different versions of face embeddings (produced by different networks) that are compatible to each other and allow for direct comparison between each other.},
+   author = {Florian Schroff and Dmitry Kalenichenko and James Philbin},
+   doi = {10.1109/CVPR.2015.7298682},
+   journal = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+   month = {3},
+   pages = {815-823},
+   publisher = {IEEE Computer Society},
+   title = {FaceNet: A Unified Embedding for Face Recognition and Clustering},
+   volume = {07-12-June-2015},
+   url = {http://arxiv.org/abs/1503.03832 http://dx.doi.org/10.1109/CVPR.2015.7298682},
+   year = {2015},
+}
+
+
+@article{Inceptionv3,
+   abstract = {Convolutional networks are at the core of most state-of-the-art computer
+vision solutions for a wide variety of tasks. Since 2014 very deep
+convolutional networks started to become mainstream, yielding substantial gains
+in various benchmarks. Although increased model size and computational cost
+tend to translate to immediate quality gains for most tasks (as long as enough
+labeled data is provided for training), computational efficiency and low
+parameter count are still enabling factors for various use cases such as mobile
+vision and big-data scenarios. Here we explore ways to scale up networks in
+ways that aim at utilizing the added computation as efficiently as possible by
+suitably factorized convolutions and aggressive regularization. We benchmark
+our methods on the ILSVRC 2012 classification challenge validation set
+demonstrate substantial gains over the state of the art: 21.2% top-1 and 5.6%
+top-5 error for single frame evaluation using a network with a computational
+cost of 5 billion multiply-adds per inference and with using less than 25
+million parameters. With an ensemble of 4 models and multi-crop evaluation, we
+report 3.5% top-5 error on the validation set (3.6% error on the test set) and
+17.3% top-1 error on the validation set.},
+   author = {Christian Szegedy and Vincent Vanhoucke and Sergey Ioffe and Jon Shlens and Zbigniew Wojna},
+   doi = {10.48550/arxiv.1512.00567},
+   isbn = {9781467388504},
+   issn = {10636919},
+   journal = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+   month = {12},
+   pages = {2818-2826},
+   publisher = {IEEE Computer Society},
+   title = {Rethinking the Inception Architecture for Computer Vision},
+   volume = {2016-December},
+   url = {https://arxiv.org/abs/1512.00567v3},
+   year = {2015},
+}
+
+@article{SENET,
+   abstract = {The central building block of convolutional neural networks (CNNs) is the
+convolution operator, which enables networks to construct informative features
+by fusing both spatial and channel-wise information within local receptive
+fields at each layer. A broad range of prior research has investigated the
+spatial component of this relationship, seeking to strengthen the
+representational power of a CNN by enhancing the quality of spatial encodings
+throughout its feature hierarchy. In this work, we focus instead on the channel
+relationship and propose a novel architectural unit, which we term the
+"Squeeze-and-Excitation" (SE) block, that adaptively recalibrates channel-wise
+feature responses by explicitly modelling interdependencies between channels.
+We show that these blocks can be stacked together to form SENet architectures
+that generalise extremely effectively across different datasets. We further
+demonstrate that SE blocks bring significant improvements in performance for
+existing state-of-the-art CNNs at slight additional computational cost.
+Squeeze-and-Excitation Networks formed the foundation of our ILSVRC 2017
+classification submission which won first place and reduced the top-5 error to
+2.251%, surpassing the winning entry of 2016 by a relative improvement of ~25%.
+Models and code are available at https://github.com/hujie-frank/SENet.},
+   author = {Jie Hu and Li Shen and Samuel Albanie and Gang Sun and Enhua Wu},
+   doi = {10.48550/arxiv.1709.01507},
+   issn = {19393539},
+   issue = {8},
+   journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+   keywords = {Squeeze-and-excitation,attention,convolutional neural networks,image representations},
+   month = {9},
+   pages = {2011-2023},
+   pmid = {31034408},
+   publisher = {IEEE Computer Society},
+   title = {Squeeze-and-Excitation Networks},
+   volume = {42},
+   url = {https://arxiv.org/abs/1709.01507v4},
+   year = {2017},
+}
+
+
+@article{DCCS,
+   abstract = {Deep clustering which adopts deep neural networks to obtain optimal
+representations for clustering has been widely studied recently. In this paper,
+we propose a novel deep image clustering framework to learn a category-style
+latent representation in which the category information is disentangled from
+image style and can be directly used as the cluster assignment. To achieve this
+goal, mutual information maximization is applied to embed relevant information
+in the latent representation. Moreover, augmentation-invariant loss is employed
+to disentangle the representation into category part and style part. Last but
+not least, a prior distribution is imposed on the latent representation to
+ensure the elements of the category vector can be used as the probabilities
+over clusters. Comprehensive experiments demonstrate that the proposed approach
+outperforms state-of-the-art methods significantly on five public datasets.},
+   author = {Junjie Zhao and Donghuan Lu and Kai Ma and Yu Zhang and Yefeng Zheng},
+   doi = {10.48550/arxiv.2007.10004},
+   isbn = {9783030585679},
+   issn = {16113349},
+   journal = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+   keywords = {Deep learning,Image clustering,Unsupervised learning},
+   month = {7},
+   pages = {54-70},
+   publisher = {Springer Science and Business Media Deutschland GmbH},
+   title = {Deep Image Clustering with Category-Style Representation},
+   volume = {12359 LNCS},
+   url = {https://arxiv.org/abs/2007.10004v1},
+   year = {2020},
+}
+
+@article{Agarap2020,
+   abstract = {Deep clustering algorithms combine representation learning and clustering by
+jointly optimizing a clustering loss and a non-clustering loss. In such
+methods, a deep neural network is used for representation learning together
+with a clustering network. Instead of following this framework to improve
+clustering performance, we propose a simpler approach of optimizing the
+entanglement of the learned latent code representation of an autoencoder. We
+define entanglement as how close pairs of points from the same class or
+structure are, relative to pairs of points from different classes or
+structures. To measure the entanglement of data points, we use the soft nearest
+neighbor loss, and expand it by introducing an annealing temperature factor.
+Using our proposed approach, the test clustering accuracy was 96.2% on the
+MNIST dataset, 85.6% on the Fashion-MNIST dataset, and 79.2% on the EMNIST
+Balanced dataset, outperforming our baseline models.},
+   author = {Abien Fred Agarap and Arnulfo P. Azcarraga},
+   doi = {10.48550/arxiv.2006.04535},
+   isbn = {9781728169262},
+   journal = {Proceedings of the International Joint Conference on Neural Networks},
+   keywords = {clustering,disentanglement,encoding,internal representations},
+   month = {6},
+   publisher = {Institute of Electrical and Electronics Engineers Inc.},
+   title = {Improving k-Means Clustering Performance with Disentangled Internal Representations},
+   url = {https://arxiv.org/abs/2006.04535v1},
+   year = {2020},
+}
+

@@ -13,6 +13,11 @@ M.~Wang and W.~Deng, ``Deep face recognition: A survey,'' {\em Neurocomputing},
 E.~Hjelmås and B.~K. Low, ``Face detection: A survey,'' {\em Computer Vision
   and Image Understanding}, vol.~83, pp.~236--274, 2001.
 
+\bibitem{Zafeiriou2015}
+S.~Zafeiriou, C.~Zhang, and Z.~Zhang, ``A survey on face detection in the wild:
+  Past, present and future,'' {\em Computer Vision and Image Understanding},
+  vol.~138, pp.~1--24, 9 2015.
+
 \bibitem{MTCNN}
 K.~Zhang, Z.~Zhang, Z.~Li, and Y.~Qiao, ``Joint face detection and alignment
   using multi-task cascaded convolutional networks,'' {\em IEEE Signal
@@ -22,6 +27,28 @@ K.~Zhang, Z.~Zhang, Z.~Li, and Y.~Qiao, ``Joint face detection and alignment
 M.~Bodini, ``A review of facial landmark extraction in 2d images and videos
   using deep learning,'' {\em Big Data and Cognitive Computing}, vol.~3,
   pp.~1--14, 3 2019.
+
+\bibitem{DCCS}
+J.~Zhao, D.~Lu, K.~Ma, Y.~Zhang, and Y.~Zheng, ``Deep image clustering with
+  category-style representation,'' {\em Lecture Notes in Computer Science
+  (including subseries Lecture Notes in Artificial Intelligence and Lecture
+  Notes in Bioinformatics)}, vol.~12359 LNCS, pp.~54--70, 7 2020.
+
+\bibitem{JULE}
+J.~Yang, D.~Parikh, and D.~Batra, ``Joint unsupervised learning of deep
+  representations and image clusters,'' {\em Proceedings of the IEEE Computer
+  Society Conference on Computer Vision and Pattern Recognition},
+  vol.~2016-December, pp.~5147--5156, 4 2016.
+
+\bibitem{Agarap2020}
+A.~F. Agarap and A.~P. Azcarraga, ``Improving k-means clustering performance
+  with disentangled internal representations,'' {\em Proceedings of the
+  International Joint Conference on Neural Networks}, 6 2020.
+
+\bibitem{IECNN}
+A.~P. Song, Q.~Hu, X.~H. Ding, X.~Y. Di, and Z.~H. Song, ``Similar face
+  recognition using the ie-cnn model,'' {\em IEEE Access}, vol.~8,
+  pp.~45244--45253, 2020.
 
 \bibitem{Young1987}
 A.~W. Young, D.~Hellawell, and D.~C. Hay, ``Configurational information in face
@@ -33,14 +60,21 @@ T.~J. Andrews, J.~Davies-Thompson, A.~Kingstone, and A.~W. Young, ``Internal
   face-selective regions of visual cortex,'' {\em Journal of Neuroscience},
   vol.~30, pp.~3544--3552, 3 2010.
 
-\bibitem{IECNN}
-A.~P. Song, Q.~Hu, X.~H. Ding, X.~Y. Di, and Z.~H. Song, ``Similar face
-  recognition using the ie-cnn model,'' {\em IEEE Access}, vol.~8,
-  pp.~45244--45253, 2020.
-
 \bibitem{Birchall2017}
 G.~Birchall, T.~Michael, and T.~Sun, ``Chinese users claim iphone x face
   recognition can’t tell them apart,'' 12 2017.
+
+\bibitem{Inceptionv3}
+C.~Szegedy, V.~Vanhoucke, S.~Ioffe, J.~Shlens, and Z.~Wojna, ``Rethinking the
+  inception architecture for computer vision,'' {\em Proceedings of the IEEE
+  Computer Society Conference on Computer Vision and Pattern Recognition},
+  vol.~2016-December, pp.~2818--2826, 12 2015.
+
+\bibitem{Facenet}
+F.~Schroff, D.~Kalenichenko, and J.~Philbin, ``Facenet: A unified embedding for
+  face recognition and clustering,'' {\em Proceedings of the IEEE Computer
+  Society Conference on Computer Vision and Pattern Recognition},
+  vol.~07-12-June-2015, pp.~815--823, 3 2015.
 
 \bibitem{Golalipour2021}
 K.~Golalipour, E.~Akbari, S.~S. Hamidi, M.~Lee, and R.~Enayatifar, ``From
@@ -83,11 +117,5 @@ G.~B. Huang, M.~Ramesh, T.~Berg, and E.~Learned-Miller, ``Labeled faces in the
 \bibitem{MLFW}
 C.~Wang, H.~Fang, Y.~Zhong, and W.~Deng, ``Mlfw: A database for face
   recognition on masked faces,'' {\em arXiv preprint arXiv:2109.05804}, 2021.
-
-\bibitem{JULE}
-J.~Yang, D.~Parikh, and D.~Batra, ``Joint unsupervised learning of deep
-  representations and image clusters,'' {\em Proceedings of the IEEE Computer
-  Society Conference on Computer Vision and Pattern Recognition},
-  vol.~2016-December, pp.~5147--5156, 4 2016.
 
 \end{thebibliography}
